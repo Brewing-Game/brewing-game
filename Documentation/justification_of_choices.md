@@ -4,7 +4,7 @@
 
 ## **Choice**: 3D
 
-## Justification:
+### Justification:
 
 * 3D models are far more attainable given the project's budget.
 
@@ -14,7 +14,7 @@
 
 ## **Choice**: Isometric Perspective
 
-## **Justification:**
+### **Justification:**
 
 * Provides good overview of the game level.
 
@@ -24,7 +24,7 @@
 
 ## **Choice**: No Player Object
 
-## **Justification**
+### **Justification**
 
 * Eliminates the difficulty of navigation on the factory floor.
 
@@ -36,7 +36,7 @@
 
 ## **Choice**: Tycoon
 
-## **Justification**
+### **Justification**
 
 * Allows for addition of increasingly complex industry tools and a more authentic simulation of managing a factory.
 
@@ -44,7 +44,7 @@
 
 ## **Choice**: Accessibility Settings (TTS, Subtitles, Text size, etc.)
 
-## **Justification**
+### **Justification**
 
 * Increases coverage of academic objectives at a low cost.
 
@@ -52,7 +52,7 @@
 
 ## **Choice**: HUD and UI-Driven Interactions
 
-## **Justification**
+### **Justification**
 
 - Increases space efficiency by eliminating in-game access points to various menus.
 
@@ -62,7 +62,7 @@
 
 ## **Choice**: Linux, Windows, MacOS support
 
-## **Justification**
+### **Justification**
 
 - Takes advantage of the features of our game engine at no additional workload.
 
