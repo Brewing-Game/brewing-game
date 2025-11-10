@@ -2,8 +2,6 @@
 
 ##### (Title pending)
 
-----
-
 ## **Choice**: 3D
 
 ## Justification:
@@ -14,8 +12,6 @@
 
 * Better meets the spacial requirements of a densely packed environment like our factory floor.
 
------
-
 ## **Choice**: Isometric Perspective
 
 ## **Justification:**
@@ -25,8 +21,6 @@
 * Carries further future potential by allowing us to add camera movement.
 
 * Reduces complexity of interactions to a simple point and click mechanic.
-
----
 
 ## **Choice**: No Player Object
 
@@ -40,8 +34,6 @@
 
 * Reduces number of potential bugs.
 
----
-
 ## **Choice**: Tycoon
 
 ## **Justification**
@@ -50,8 +42,6 @@
 
 * Creates linear progression and provides objectives to the -otherwise pointless- gameloop.
 
----
-
 ## **Choice**: Accessibility Settings (TTS, Subtitles, Text size, etc.)
 
 ## **Justification**
@@ -59,8 +49,6 @@
 * Increases coverage of academic objectives at a low cost.
 
 * Increases potential userbase.
-
----
 
 ## **Choice**: HUD and UI-Driven Interactions
 
@@ -72,8 +60,6 @@
 
 - Allows better control over displaying entity-specific information.
 
----
-
 ## **Choice**: Linux, Windows, MacOS support
 
 ## **Justification**
@@ -81,5 +67,3 @@
 - Takes advantage of the features of our game engine at no additional workload.
 
 - Increases accessibility.
-
----
