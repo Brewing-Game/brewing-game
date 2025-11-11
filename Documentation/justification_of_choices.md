@@ -10,7 +10,7 @@
 
 * 3D environments are easier to work in.
 
-* Better meets the spacial requirements of a densely packed environment like our factory floor.
+* Better meets the spatial requirements of a densely packed environment like our factory floor.
 
 ## **Choice**: Isometric Perspective
 
