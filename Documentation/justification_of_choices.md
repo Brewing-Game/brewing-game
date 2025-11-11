@@ -1,4 +1,4 @@
-# **Jusification of choices for the "Brewing Game" project**
+# **Justification of choices for the "Brewing Game" project**
 
 ##### (Title pending)
 
