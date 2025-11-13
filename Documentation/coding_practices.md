@@ -9,13 +9,13 @@
 - methodVariables
 - functionVariables
 - _privateVariables
+- publicMemberVariables
 
 #### use **PascalCase** for:
 
 - ClassNames
 - Methods
 - Functions
-- PublicMemberVariables
 - (I)Interfaces
 - Enums
 
