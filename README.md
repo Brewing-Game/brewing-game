@@ -11,9 +11,8 @@ The game uses 3D assets and an isometric fixed view on the scene, the player can
 Functional requirements have been defined deriving from the user and task analysis document and client’s brief.
 ###### Game 
 1.	The system should allow the player to start the game from main menu (title screen)
-2.	The system should offer an input to allow the player to pick appropriate pronouns
-3.	The system should display a guided tutorial 
-4.	The system should provide a complete gameplay loop:
+2.	The system should display a guided tutorial 
+3.	The system should provide a complete gameplay loop:
 •	Receive brewing task
 •	Fill mash tun with water
 •	Brew batch
@@ -21,19 +20,18 @@ Functional requirements have been defined deriving from the user and task analys
 •	Receive points as product quality indicator
 •	Unlock instrumentation upgrade
 •	Brew new batch with instrumentation aid
-5.	The system should allow the player to brew few times
-6.	The system should allow the player to upgrade the mash tun with a water level sensor
-7.	The system should allow the player to brew with upgraded tun to appreciate the difference
+4.	The system should allow the player to brew few times
+5.	The system should allow the player to upgrade the mash tun with a water level sensor
+6.	The system should allow the player to brew with upgraded tun to appreciate the difference
 4.	Interface Requirements
 The system will be interface-driven, all interactions should be possible using a mouse.
 ##### User Interface
-8.	The system should include:
+7.	The system should include:
 •	Main Menu
-•	Pronoun selection screen
 •	Pause Menu
 •	Heads-Up Display (in game interface)
-9.	The system should allow interactions with objects via mouse click
-10.	The HUD should display:
+8.	The system should allow interactions with objects via mouse click
+9.	The HUD should display:
 •	Pause menu icon
 •	Tutorial script icon
 •	Selected object’s:

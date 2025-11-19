@@ -30,11 +30,9 @@ Functional requirements have been defined deriving from the user and task analys
 
 1.      The system should allow the player to start the game from main menu (title screen)
 
-2.      The system should offer an input to allow the player to pick appropriate pronouns
+2.      The system should display a guided tutorial
 
-3.      The system should display a guided tutorial
-
-4.      The system should provide a complete gameplay loop:
+3.      The system should provide a complete gameplay loop:
 
 ·         Receive brewing task
 
@@ -50,11 +48,11 @@ Functional requirements have been defined deriving from the user and task analys
 
 ·         Brew new batch with instrumentation aid
 
-5.      The system should allow the player to brew few times
+4.      The system should allow the player to brew few times
 
-6.      The system should allow the player to upgrade the mash tun with a water level sensor
+5.      The system should allow the player to upgrade the mash tun with a water level sensor
 
-7.      The system should allow the player to brew with upgraded tun to appreciate the difference
+6.      The system should allow the player to brew with upgraded tun to appreciate the difference
 
 # 4.  Interface Requirements
 
@@ -62,19 +60,17 @@ The system will be interface-driven, all interactions should be possible using a
 
 ## 4.1  User Interface
 
-8.      The system should include:
+7.      The system should include:
 
 ·         Main Menu
-
-·         Pronoun selection screen
 
 ·         Pause Menu
 
 ·         Heads-Up Display (in game interface)
 
-9.      The system should allow interactions with objects via mouse click
+8.      The system should allow interactions with objects via mouse click
 
-10.  The HUD should display:
+9.  The HUD should display:
 
 ·         Pause menu icon
 
@@ -120,9 +116,9 @@ Accessibility compliance:
 
 Must have:
 
-11.  Text to Speech or narrated text.
+10.  Text to Speech or narrated text.
 
-12.  Font and text colour/size personalisation.
+11.  Font and text colour/size personalisation.
 
 # 8.  Preliminary schedule and budget
 
