@@ -118,11 +118,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: LilitaOne-Regular SDF
+  m_Name: LilitaOne-Shadow
   m_EditorClassIdentifier: 
-  hashCode: 1275464279
+  hashCode: -659251366
   material: {fileID: -4566520606507571407}
-  materialHashCode: -224660969
+  materialHashCode: -550980038
   m_Version: 1.1.0
   m_SourceFontFileGUID: cf542c9ac8673e6158c7945db4425b7e
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: cf542c9ac8673e6158c7945db4425b7e, type: 3}
