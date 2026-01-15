@@ -1011,13 +1011,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 553088988}
   m_SourcePrefab: {fileID: 100100000, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
 --- !u!4 &553088986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
   m_PrefabInstance: {fileID: 553088985}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &553088987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
+  m_PrefabInstance: {fileID: 553088985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &553088988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553088987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fbf47522a2c69542bfaea1d67acadf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDebug: 0
+  _maxWaterLevel: 20
+  _optimalWaterLevel: 14.2
 --- !u!1001 &655921563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1211,7 +1234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1284,7 +1307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
       propertyPath: m_Name
-      value: mashtun2 (1)
+      value: mashtun1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
