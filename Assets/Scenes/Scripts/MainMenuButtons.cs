@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// This scripts provides behaviours for all buttons in Main Menu.
 public class MainMenuButtons : MonoBehaviour
 {
-
     public GameObject mainMenu;
     public GameObject settingsMenu;
 
     // Start Button
-    public void StartGame() {SceneManager.LoadScene(1);}
-    
+    public void StartGame() 
+    {
+        SceneManager.LoadScene(1);
+    }
 
     // Settings Button
-
-
+    public void ToggleMenus()
+    {
+        mainMenu.SetActive(settingsMenu.activeSelf);
+        settingsMenu.SetActive(!mainMenu.activeSelf);
+    }
 
     // Quit Button
     public void QuitGame() 
@@ -25,14 +30,5 @@ public class MainMenuButtons : MonoBehaviour
         #else
             Application.Quit();
         #endif
-    }
-
-
-    public void ToggleMenus()
-    {
-        mainMenu.SetActive(settingsMenu.activeSelf);
-        settingsMenu.SetActive(!mainMenu.activeSelf);
-        //mainMenu.GetComponent<Canvas>().enabled = !settingsMenu.GetComponent<Canvas>().enabled;
-        //settingsMenu.GetComponent<Canvas>().enabled = !mainMenu.GetComponent<Canvas>().enabled;
-    }
+    }    
 }
