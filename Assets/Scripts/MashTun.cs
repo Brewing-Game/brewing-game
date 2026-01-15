@@ -16,7 +16,7 @@ public class MashTun : MonoBehaviour
     [SerializeField]
     private float _optimalWaterLevel;
     private float _fillRate = 0.5f;
-    private List<IInstrument> instruments;
+    private List<IInstrument> instruments = new List<IInstrument>();
 
     private bool _isFilling = false;
     private bool _isBrewing = false;
@@ -112,7 +112,7 @@ public class MashTun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instruments = new List<IInstrument>();
+       
     }
 
     // Update is called once per frame
