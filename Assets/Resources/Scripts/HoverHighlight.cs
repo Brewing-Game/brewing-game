@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 // This component swaps the material of highlightedObject with highlightMaterial
 // when mouse enters collision with this.gameObject. 
 
 [RequireComponent(typeof(Collider))]
-public class HoverHighlight : MonoBehaviour
+public class HoverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
     public Material highlightMaterial;      // Material applied when highlighting.
@@ -15,12 +16,12 @@ public class HoverHighlight : MonoBehaviour
     private Material _fallbackMaterial;     // The original Material.
     private Renderer _renderer;             // The component that stores the Material.
 
-    void OnMouseEnter()
+    public void OnPointerEnter(PointerEventData eventData)
     {
         _renderer.material = highlightMaterial;
     }
 
-    void OnMouseExit()
+    public void OnPointerExit(PointerEventData eventData)
     {
         _renderer.material = _fallbackMaterial;
     }
