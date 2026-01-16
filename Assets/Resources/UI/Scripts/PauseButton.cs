@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Image))]
 public class PauseButton : MonoBehaviour
@@ -25,8 +26,9 @@ public class PauseButton : MonoBehaviour
         _fallbackIcon = _imageComponent.sprite;
     }
     
-    void FixedUpdate()
+    void Update()
     {
         if (!PauseMenu.activeSelf) _imageComponent.sprite = _fallbackIcon;
+        if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
     }
 }
