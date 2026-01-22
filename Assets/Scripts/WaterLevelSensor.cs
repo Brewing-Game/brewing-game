@@ -35,8 +35,7 @@ public class WaterLevelSensor : IInstrument
         }
     }
     public void OnBrewing()
-    {
-        //slider could have animation or water can change color
+    {        
         if (_fillImage != null && mashTun != null)
         {
             if (_colorTransitionCoroutine != null)
