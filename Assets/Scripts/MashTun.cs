@@ -9,16 +9,17 @@ public class MashTun : MonoBehaviour
     [SerializeField]
     public bool isDebug = false;
     private float _waterLevel;
-    public float WaterLevel => _waterLevel;
+    public float waterLevel => _waterLevel;
     [SerializeField]
     private float _maxWaterLevel;
-    public float MaxWaterLevel => _maxWaterLevel;
+    public float maxWaterLevel => _maxWaterLevel;
     [SerializeField]
     private float _optimalWaterLevel;
     private float _fillRate = 0.5f;
     private List<IInstrument> instruments = new List<IInstrument>();
 
     private bool _isFilling = false;
+    public bool isFilling => _isFilling;
     private bool _isBrewing = false;
     private bool _hasBrewed = false;
 

@@ -21,7 +21,7 @@ public class WaterLevelSensor : IInstrument
     {
         if(_waterLevelSlider != null && mashTun != null)
         {
-            _waterLevelSlider.value = mashTun.WaterLevel / mashTun.MaxWaterLevel;
+            _waterLevelSlider.value = mashTun.waterLevel / mashTun.maxWaterLevel;
         }
     }
     public void OnBrewing()
