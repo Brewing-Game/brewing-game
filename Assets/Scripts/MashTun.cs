@@ -110,6 +110,25 @@ public class MashTun : MonoBehaviour
         }
     }
 
+    public MashTunViewModel GetViewModel()
+    {
+        var viewModel = new MashTunViewModel
+        {
+            FillButtonLabel = _isFilling ? "Stop" : "Fill",
+            ShowUpgradeButton = true,
+            ShowWaterLevelSlider = false,
+            WaterLevelPercentage = _waterLevel / _maxWaterLevel
+        };
+
+        foreach(var instrument in instruments)
+        {
+            instrument.UpdateViewModel(viewModel, this);
+        }
+
+        return viewModel;
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
