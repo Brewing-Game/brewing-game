@@ -644,7 +644,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1117487852251487126, guid: f56e6f063f0b43490b1befbefbda6558, type: 3}
       propertyPath: m_text
-      value: Save
+      value: Apply
       objectReference: {fileID: 0}
     - target: {fileID: 1117487852251487126, guid: f56e6f063f0b43490b1befbefbda6558, type: 3}
       propertyPath: m_fontSize
@@ -764,7 +764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4687442115802405085, guid: f56e6f063f0b43490b1befbefbda6558, type: 3}
       propertyPath: m_Name
-      value: SaveMenu
+      value: ApplyButton
       objectReference: {fileID: 0}
     - target: {fileID: 9166723821891236608, guid: f56e6f063f0b43490b1befbefbda6558, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2394,11 +2394,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultProfile:
     masterVolume: 0
+    fullscreen: 0
     resolution: 0
     autoSaveDelay: 0
   masterVolumeSlider: {fileID: 78580643}
   resolutionDropdown: {fileID: 384394923}
   autosaveDropdown: {fileID: 992239957}
+  fullscreenToggle: {fileID: 0}
 --- !u!1 &2103565742
 GameObject:
   m_ObjectHideFlags: 0

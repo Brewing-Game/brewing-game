@@ -2096,11 +2096,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultProfile:
     masterVolume: 0
+    fullscreen: 0
     resolution: 0
     autoSaveDelay: 0
   masterVolumeSlider: {fileID: 303665469}
   resolutionDropdown: {fileID: 303665468}
   autosaveDropdown: {fileID: 303665467}
+  fullscreenToggle: {fileID: 0}
 --- !u!1 &856083539 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
@@ -3274,7 +3276,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Save
+  m_text: Apply
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4db05d2bc72c056149470011eaf91a7d, type: 2}
   m_sharedMaterial: {fileID: -6956454205516567963, guid: 4db05d2bc72c056149470011eaf91a7d, type: 2}
@@ -3764,7 +3766,7 @@ GameObject:
   - component: {fileID: 1568853515}
   - component: {fileID: 1568853514}
   m_Layer: 0
-  m_Name: SaveButton
+  m_Name: ApplyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4206,7 +4208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 1833422376}
-  ConfirmExitWindow: {fileID: 1087579039}
   ResumeIcon: {fileID: 21300000, guid: 1b383cfe1a950c4bfa24d7b2442656de, type: 3}
 --- !u!114 &1601784670
 MonoBehaviour:
