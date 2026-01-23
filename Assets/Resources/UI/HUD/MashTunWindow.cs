@@ -13,9 +13,7 @@ public class MashTunWindow : MonoBehaviour
     public Button upgradeButton;
     public Button brewButton;
     public Button collectButton;
-
-    public Slider waterLevel;
-    
+    public Slider waterLevel;    
     public void OnToggleFill()
     {
         if(!tun.isFilling)
@@ -51,9 +49,18 @@ public class MashTunWindow : MonoBehaviour
     {
         IInstrument waterLevelSensor = new WaterLevelSensor(waterLevel);
         tun.AddInstrument(waterLevelSensor);
-        upgradeButton.gameObject.SetActive(false);
+        upgradeButton.gameObject.SetActive(false);        
     }
     
+    public void UpdateUI()
+    {
+        if (tun == null) return;
+        var viewModel = tun.GetViewModel();
+        fillButtonLabel.text = viewModel.FillButtonLabel;
+        upgradeButton.gameObject.SetActive(viewModel.ShowUpgradeButton);
+        waterLevel.gameObject.SetActive(viewModel.ShowWaterLevelSlider);
+        waterLevel.value = viewModel.WaterLevelPercentage;
+    }
     void Start()
     {   
         fillButtonLabel = fillButton.GetComponentInChildren<TMP_Text>(true);
@@ -67,5 +74,6 @@ public class MashTunWindow : MonoBehaviour
     void Update()
     {
        // Debug.Log(tun.waterLevel);
+       UpdateUI();
     }
 }
