@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 public class PauseButton : MonoBehaviour
 {
     public GameObject PauseMenu;
+    public GameObject ConfirmExitWindow;
+
     public Sprite ResumeIcon;
 
     private Sprite _fallbackIcon;
@@ -16,7 +18,6 @@ public class PauseButton : MonoBehaviour
     public void ToggleMenu() 
     { 
         PauseMenu.SetActive(!PauseMenu.activeSelf); 
-
         if (PauseMenu.activeSelf) _imageComponent.sprite = ResumeIcon;
     }
     void Start() 
