@@ -11,6 +11,7 @@ using TMPro;
 public class SettingsProfile
 {
     public int masterVolume = 0;
+    public bool fullscreen = false;
     public int resolution = 0;     // Stores the index of _resolutionOptions
     public int autoSaveDelay = 0;  // Stores the index of _autosaveOptions
 }
@@ -24,6 +25,7 @@ public class SettingsMenu : MonoBehaviour
     public Slider masterVolumeSlider;
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown autosaveDropdown;
+    public Toggle fullscreenToggle;
 
     private string _settingsFilePath;
     private SettingsProfile _userProfile;
@@ -56,7 +58,7 @@ public class SettingsMenu : MonoBehaviour
         
         PopulateResolutionOptions();
         PopulateAutosaveOptions();
-        ApplyUserOptions();
+        DisplayUserProfile();
     }
 
     // Update _userProfile with values from menu.
@@ -68,6 +70,7 @@ public class SettingsMenu : MonoBehaviour
             _userProfile.masterVolume = (int)masterVolumeSlider.value;
             _userProfile.resolution = resolutionDropdown.value;
             _userProfile.autoSaveDelay = autosaveDropdown.value;
+            _userProfile.fullscreen = fullscreenToggle.isOn;
         }
     }
 
@@ -82,6 +85,7 @@ public class SettingsMenu : MonoBehaviour
     {
         File.WriteAllText(_settingsFilePath, JsonUtility.ToJson(_userProfile));
         Debug.Log("Saved successfully!");
+        ApplySettings();
     }
 
     // Populates the resolutions dropdown box
@@ -102,10 +106,19 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-    public void ApplyUserOptions()
+    public void DisplayUserProfile()
     {
         resolutionDropdown.value = _userProfile.resolution;
         autosaveDropdown.value = _userProfile.autoSaveDelay;
         masterVolumeSlider.value = _userProfile.masterVolume;
+        fullscreenToggle.isOn = _userProfile.fullscreen;
+    }
+
+    public void ApplySettings()
+    {
+        Screen.SetResolution((int)_resolutionOptions[_userProfile.resolution].x, 
+                             (int)_resolutionOptions[_userProfile.resolution].y,
+                             _userProfile.fullscreen);
+        AudioListener.volume = _userProfile.masterVolume;
     }
 }
