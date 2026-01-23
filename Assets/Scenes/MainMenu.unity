@@ -2400,7 +2400,7 @@ MonoBehaviour:
   masterVolumeSlider: {fileID: 78580643}
   resolutionDropdown: {fileID: 384394923}
   autosaveDropdown: {fileID: 992239957}
-  fullscreenToggle: {fileID: 0}
+  fullscreenToggle: {fileID: 2980447218942115652}
 --- !u!1 &2103565742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,6 +2708,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0ac1a87f38ad912b84762a53f94e1e6, type: 3}
+--- !u!114 &2980447218942115652 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1356229619376134234, guid: a0ac1a87f38ad912b84762a53f94e1e6, type: 3}
+  m_PrefabInstance: {fileID: 2980447218942115651}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

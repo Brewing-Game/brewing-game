@@ -1192,6 +1192,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &303665470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1356229619376134234, guid: a0ac1a87f38ad912b84762a53f94e1e6, type: 3}
+  m_PrefabInstance: {fileID: 303665465}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &303665473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2102,7 +2113,7 @@ MonoBehaviour:
   masterVolumeSlider: {fileID: 303665469}
   resolutionDropdown: {fileID: 303665468}
   autosaveDropdown: {fileID: 303665467}
-  fullscreenToggle: {fileID: 0}
+  fullscreenToggle: {fileID: 303665470}
 --- !u!1 &856083539 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
