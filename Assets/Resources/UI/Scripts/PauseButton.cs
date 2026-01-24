@@ -16,7 +16,6 @@ public class PauseButton : MonoBehaviour
     public void ToggleMenu() 
     { 
         PauseMenu.SetActive(!PauseMenu.activeSelf); 
-
         if (PauseMenu.activeSelf) _imageComponent.sprite = ResumeIcon;
     }
     void Start() 
