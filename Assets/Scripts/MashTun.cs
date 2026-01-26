@@ -9,16 +9,17 @@ public class MashTun : MonoBehaviour
     [SerializeField]
     public bool isDebug = false;
     private float _waterLevel;
-    public float WaterLevel => _waterLevel;
+    public float waterLevel => _waterLevel;
     [SerializeField]
     private float _maxWaterLevel;
-    public float MaxWaterLevel => _maxWaterLevel;
+    public float maxWaterLevel => _maxWaterLevel;
     [SerializeField]
     private float _optimalWaterLevel;
     private float _fillRate = 0.5f;
     private List<IInstrument> instruments = new List<IInstrument>();
 
     private bool _isFilling = false;
+    public bool isFilling => _isFilling;
     private bool _isBrewing = false;
     private bool _hasBrewed = false;
 
@@ -107,6 +108,25 @@ public class MashTun : MonoBehaviour
             instrument.Uninstall();
             instruments.Remove(instrument);
         }
+    }
+
+    public MashTunViewModel GetViewModel()
+    {
+        var viewModel = new MashTunViewModel
+        {
+            FillButtonLabel = _isFilling ? "Stop" : "Fill",
+            ShowUpgradeButton = true,
+            ShowWaterLevelSlider = false,
+            WaterLevelPercentage = _waterLevel / _maxWaterLevel
+        };
+
+        foreach(var instrument in instruments)
+        {
+            instrument.UpdateViewModel(viewModel, this);
+        }
+
+        return viewModel;
+
     }
 
     // Start is called before the first frame update

@@ -10,4 +10,6 @@ public interface IInstrument
     public GameObject GetUIElement();
     public void Install(MashTun tun);
     public void Uninstall();
+
+    public void UpdateViewModel(MashTunViewModel viewModel, MashTun tun);
 }
