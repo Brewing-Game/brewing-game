@@ -119,7 +119,6 @@ public class SettingsMenu : MonoBehaviour
         Screen.SetResolution((int)_resolutionOptions[_userProfile.resolution].x, 
                              (int)_resolutionOptions[_userProfile.resolution].y,
                              _userProfile.fullscreen);
-        Debug.Log($"{_userProfile.masterVolume}");
         AudioListener.volume = _userProfile.masterVolume;
     }
 }
