@@ -10,7 +10,7 @@ using TMPro;
 [Serializable]
 public class SettingsProfile
 {
-    public int masterVolume = 0;
+    public float masterVolume = 0f;
     public bool fullscreen = false;
     public int resolution = 0;     // Stores the index of _resolutionOptions
     public int autoSaveDelay = 0;  // Stores the index of _autosaveOptions
@@ -67,7 +67,7 @@ public class SettingsMenu : MonoBehaviour
         _isEnabled = gameObject.activeSelf;
         if (_isEnabled)
         {
-            _userProfile.masterVolume = (int)masterVolumeSlider.value;
+            _userProfile.masterVolume = (float)masterVolumeSlider.value;
             _userProfile.resolution = resolutionDropdown.value;
             _userProfile.autoSaveDelay = autosaveDropdown.value;
             _userProfile.fullscreen = fullscreenToggle.isOn;

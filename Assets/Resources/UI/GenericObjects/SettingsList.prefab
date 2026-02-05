@@ -771,9 +771,9 @@ RectTransform:
   - {fileID: 515182034588133766}
   m_Father: {fileID: 8069845216593897930}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 149, y: -108.75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 303, y: 22.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1359930748520126398
@@ -1981,9 +1981,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6544971411538150950}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
-  m_WholeNumbers: 1
-  m_Value: 100
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3382,9 +3382,9 @@ RectTransform:
   - {fileID: 6205296069558966972}
   m_Father: {fileID: 8069845216593897930}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 149, y: -43.75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 303, y: 22.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7031626695430400659
@@ -3589,9 +3589,9 @@ RectTransform:
   - {fileID: 3038563949773071729}
   m_Father: {fileID: 8069845216593897930}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 149, y: -76.25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 303, y: 22.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7602695555865497812
@@ -3959,9 +3959,9 @@ RectTransform:
   - {fileID: 2684941550189985258}
   m_Father: {fileID: 8069845216593897930}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 149, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 303, y: 22.5}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &8489101200315968699
