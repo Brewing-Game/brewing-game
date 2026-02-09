@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,16 +13,17 @@ public class GameManager : MonoBehaviour
     [Header("Game State")]
     public bool isGameActive = false;
     private int _totalPoints = 0;
-    private int _brewsCompleted = 0;
 
-    [Header("Win Condition")]
-    [SerializeField] private int _brewsToWin = 3;
-    [SerializeField] private int _pointsToWin = 100;
+    [Header("Win Condition")]   
+    [SerializeField] private int _pointsToWin = 30;
+    private int _startPoints = 0;
 
-    [Header("UI References")]
+    [Header("UI")]
     [SerializeField] private GameObject _winPanel;
     [SerializeField] private TMP_Text _winMessageText;
-    [SerializeField] private TMP_Text _pointsDisplayText;
+    [SerializeField] private PlayerScoreIndicator playerScoreIndicator;
+    [SerializeField] private MashTunWindow mashTunWindow;
+    
 
     void Awake()
     {
@@ -45,20 +47,57 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isGameActive = true;
-        _totalPoints = 0;
-        _brewsCompleted = 0;
+        playerScoreIndicator.Score = _startPoints;        
         if(_winPanel != null)
         {
             _winPanel.SetActive(false);
         }
-        UpdatePointsDisplay();
+        
         Debug.Log("Game Started");
     }
 
-    
+    public void OnBeerCollected(int points)
+    {
+        if(!isGameActive) return;
+
+        _totalPoints += points;        
+
+        if(playerScoreIndicator != null)
+        {
+            playerScoreIndicator.Score = _totalPoints;
+        }
+    }
+
+    private void CheckWinCondition()
+    {
+        if(_totalPoints >= _pointsToWin)
+        {
+            EndGame(true);
+        }  
+    }
+    private void EndGame(bool isWinConditionMet)
+    {
+        isGameActive = false;
+        if(isWinConditionMet)
+        {
+            ShowWinScreen();
+        }
+    }
+
+    private void ShowWinScreen()
+    {
+        if(_winPanel != null)
+        {
+            _winPanel.SetActive(true);
+        }
+        if(_winMessageText != null)
+        {
+            _winMessageText.text = "Congratulations, you won!";
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        CheckWinCondition();
     }
 }
