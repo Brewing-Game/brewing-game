@@ -42,7 +42,16 @@ public class MashTunWindow : MonoBehaviour
     public void OnCollectButtonClick()
     {
         int points = tun.CollectBeer();
-        Debug.Log(points);
+        if(points > 0)
+        {
+            Debug.Log($"Points collected {points}");
+
+            //notify gamemanager
+            if(GameManager.Instance != null)
+            {
+                GameManager.Instance.OnBeerCollected(points);
+            }
+        }
     }
 
     public void OnUpgradeButtonClick()
