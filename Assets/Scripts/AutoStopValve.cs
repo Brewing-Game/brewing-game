@@ -6,55 +6,19 @@ using UnityEngine;
 
 public class AutoStopValve : IInstrument
 {
-    private MashTun mashTun;
-    [SerializeField] private float _setStopLevel;
-    private Coroutine _stopAtSetLevelCoroutine;
-    private TMP_InputField _inputLevel;
-    private GameObject UIElement;
-    [SerializeField] private bool _isStopLevelSet;
-
-    public AutoStopValve(TMP_InputField inputFieldUI)
-    {
-        this._inputLevel = inputFieldUI;
-        this.UIElement = inputFieldUI?.gameObject;
-        this._setStopLevel = 7f;
-        this._isStopLevelSet = false;
-
-        if(_inputLevel != null)
-        {            
-            _inputLevel.onEndEdit.AddListener(OnInputValueChanged);
-        }
-    }
-
-    private void OnInputValueChanged(string value)
-    {   
-        if (float.TryParse(value, out float result))
-        {
-            _setStopLevel = Mathf.Clamp(result, 0f, mashTun?.maxWaterLevel ?? 100f);
-            _isStopLevelSet = true;
-
-            if (_inputLevel != null)
-            {
-                _inputLevel.text = _setStopLevel.ToString("F1");
-            }
-            Debug.Log($"AutoStopValve set to stop at: {_setStopLevel}");
-        }
-        else if (string.IsNullOrEmpty(value))
-        {            
-            _isStopLevelSet = false;
-            _setStopLevel = 7f;
-            Debug.Log("AutoStopValve disabled (no level set)");
-        }
-    }
-
+    private MashTun mashTun;    
+    private Coroutine _stopAtOptimalLevelCoroutine;
+    private float _optimalStopLevel;
+  
     private IEnumerator StopAtSetLevel()
     {
         while (mashTun != null && mashTun.isFilling)
         {
-            if(mashTun.waterLevel >= _setStopLevel)
+            _optimalStopLevel = mashTun.optimalWaterLevel;
+            if(mashTun.waterLevel >= _optimalStopLevel)
             {
                 mashTun.StopWaterFlow();
-                _stopAtSetLevelCoroutine = null;
+                _stopAtOptimalLevelCoroutine = null;
                 yield break; //exit coroutine
             }
             yield return null;
@@ -62,62 +26,48 @@ public class AutoStopValve : IInstrument
     }
     public void OnMashTunFill()
     {
-        if(mashTun != null && mashTun.isFilling && _stopAtSetLevelCoroutine == null)
+        if(mashTun != null && mashTun.isFilling && _stopAtOptimalLevelCoroutine == null)
         {
-            _stopAtSetLevelCoroutine = mashTun.StartCoroutine(StopAtSetLevel());
+            _stopAtOptimalLevelCoroutine = mashTun.StartCoroutine(StopAtSetLevel());
         }
-        if(mashTun != null && !mashTun.isFilling && _stopAtSetLevelCoroutine != null)
+        if(mashTun != null && !mashTun.isFilling && _stopAtOptimalLevelCoroutine != null)
         {
-            mashTun.StopCoroutine(_stopAtSetLevelCoroutine);
-            _stopAtSetLevelCoroutine = null;
+            mashTun.StopCoroutine(_stopAtOptimalLevelCoroutine);
+            _stopAtOptimalLevelCoroutine = null;
         }
     }
     public void OnBrewing()
     {
-        if (_stopAtSetLevelCoroutine != null && mashTun != null)
+        if (_stopAtOptimalLevelCoroutine != null && mashTun != null)
         {
-            mashTun.StopCoroutine(_stopAtSetLevelCoroutine);
-            _stopAtSetLevelCoroutine = null;
+            mashTun.StopCoroutine(_stopAtOptimalLevelCoroutine);
+            _stopAtOptimalLevelCoroutine = null;
         }
     }
+
     public void OnCollectBeer()
     {
-        if (_inputLevel != null)
-        {
-            _inputLevel.text = "";
-        }
-        _setStopLevel = 7f;
+        
     }
+
     public GameObject GetUIElement()
     {
-        return UIElement;
+        return null;
     }
     public void Install(MashTun tun)
     {
         mashTun = tun;
-        if (_inputLevel != null)
-        {
-            _inputLevel.gameObject.SetActive(true);
-            _inputLevel.text = "";
-            _inputLevel.placeholder.GetComponent<TMP_Text>().text = "Stop Level";
-        }
+
         Debug.Log("AutoStopValve installed");
     }
     public void Uninstall()
     {
-        if (_stopAtSetLevelCoroutine != null && mashTun != null)
+        if (_stopAtOptimalLevelCoroutine != null && mashTun != null)
         {
-            mashTun.StopCoroutine(_stopAtSetLevelCoroutine);
-            _stopAtSetLevelCoroutine = null;
+            mashTun.StopCoroutine(_stopAtOptimalLevelCoroutine);
+            _stopAtOptimalLevelCoroutine = null;
         }
-        
-        if (_inputLevel != null)
-        {
-            _inputLevel.onEndEdit.RemoveListener(OnInputValueChanged);
-            _inputLevel.gameObject.SetActive(false);
-        }
-        
-        _isStopLevelSet = false;
+
         mashTun = null;
         Debug.Log("AutoStopValve uninstalled");
     }
