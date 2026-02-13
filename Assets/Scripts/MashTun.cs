@@ -18,6 +18,8 @@ public class MashTun : MonoBehaviour
     [SerializeField]
     private float _tolerance;
     [SerializeField]
+
+    public float optimalWaterLevel => _optimalWaterLevel;
     private float _fillRate = 0.5f;
     private List<IInstrument> instruments = new List<IInstrument>();
 
