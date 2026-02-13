@@ -15,6 +15,9 @@ public class MashTun : MonoBehaviour
     public float maxWaterLevel => _maxWaterLevel;
     [SerializeField]
     private float _optimalWaterLevel;
+    [SerializeField]
+    private float _tolerance;
+    [SerializeField]
     private float _fillRate = 0.5f;
     private List<IInstrument> instruments = new List<IInstrument>();
 
@@ -75,7 +78,7 @@ public class MashTun : MonoBehaviour
     {
         if (_hasBrewed)
         {
-            int points = (int)Mathf.Round(CalculateQualityIndex(_waterLevel) * 1.0f);
+            int points = (int)Mathf.Round(CalculatePoints(_waterLevel));
             foreach(var instrument in instruments)
             {
                 instrument.OnCollectBeer();
@@ -87,9 +90,14 @@ public class MashTun : MonoBehaviour
         return 0;
     }
 
-    public float CalculateQualityIndex(float level)
+    public float CalculatePoints(float level)
     {
-        return level;
+        float difference = Mathf.Abs(level - _optimalWaterLevel);
+        if(difference >= _tolerance)
+        {
+            return 0;
+        }
+        return 10 - (difference * 10/_tolerance);
     }
 
     public void AddInstrument(IInstrument instrument)

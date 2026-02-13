@@ -52,6 +52,10 @@ public class MashTunWindow : MonoBehaviour
                 GameManager.Instance.OnBeerCollected(points);
             }
         }
+        else
+        {
+            Debug.Log($"You obtained no points: {points}");
+        }
     }
 
     public void OnUpgradeButtonClick()
