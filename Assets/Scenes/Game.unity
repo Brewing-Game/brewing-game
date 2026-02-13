@@ -1248,6 +1248,7 @@ MonoBehaviour:
   isDebug: 0
   _maxWaterLevel: 10
   _optimalWaterLevel: 7
+  _tolerance: 4
 --- !u!1 &644425698 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2682847331518883396, guid: dcd24ab14bda8dd8fa56992680171e41, type: 3}
@@ -2859,6 +2860,7 @@ MonoBehaviour:
   isDebug: 0
   _maxWaterLevel: 10
   _optimalWaterLevel: 7
+  _tolerance: 4
 --- !u!1 &1150669029 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5340137376448927479, guid: dcd24ab14bda8dd8fa56992680171e41, type: 3}
@@ -4809,6 +4811,7 @@ MonoBehaviour:
   brewButton: {fileID: 644425700}
   collectButton: {fileID: 477401020}
   waterLevel: {fileID: 227940066}
+  inputStopLevel: {fileID: 0}
 --- !u!1 &2076390291
 GameObject:
   m_ObjectHideFlags: 0
