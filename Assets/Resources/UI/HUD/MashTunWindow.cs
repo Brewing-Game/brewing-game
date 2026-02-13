@@ -13,7 +13,8 @@ public class MashTunWindow : MonoBehaviour
     public Button upgradeButton;
     public Button brewButton;
     public Button collectButton;
-    public Slider waterLevel;    
+    public Slider waterLevel;  
+    public TMP_InputField inputStopLevel;  
     public void OnToggleFill()
     {
         if(!tun.isFilling)
@@ -61,7 +62,9 @@ public class MashTunWindow : MonoBehaviour
     public void OnUpgradeButtonClick()
     {
         IInstrument waterLevelSensor = new WaterLevelSensor(waterLevel);
+        IInstrument autoStopValve = new AutoStopValve();
         tun.AddInstrument(waterLevelSensor);
+        tun.AddInstrument(autoStopValve);
         upgradeButton.gameObject.SetActive(false);        
     }
     
