@@ -71,32 +71,42 @@ public class MashTunWindow : MonoBehaviour
     public void UpdateUI()
     {
         if (tun == null) return;
+
+        if (fillButtonLabel == null || upgradeButton == null || waterLevel == null) return;
+
         var viewModel = tun.GetViewModel();
         fillButtonLabel.text = viewModel.FillButtonLabel;
         upgradeButton.gameObject.SetActive(viewModel.ShowUpgradeButton);
         waterLevel.gameObject.SetActive(viewModel.ShowWaterLevelSlider);
         waterLevel.value = viewModel.WaterLevelPercentage;
     }
-    void Start()
-    {   
-        fillButtonLabel = fillButton.GetComponentInChildren<TMP_Text>(true);
-        Debug.Log(fillButtonLabel);
+    void Awake()
+    {
+        if (fillButtonLabel == null && fillButton != null)
+            fillButtonLabel = fillButton.GetComponentInChildren<TMP_Text>(true);
+            
+        fillButtonLabel = fillButton.GetComponentInChildren<TMP_Text>(true);        
         fillButton.onClick.AddListener(OnToggleFill);
         brewButton.onClick.AddListener(OnBrewButtonClick);
         upgradeButton.onClick.AddListener(OnUpgradeButtonClick);
         collectButton.onClick.AddListener(OnCollectButtonClick);
     }
+    void Start()
+    {   
+
+    }
 
     void Update()
     {
-       // Debug.Log(tun.waterLevel);
-        UpdateUI();
-        if(tun == null) return;
+       // Debug.Log(tun.waterLevel);        
+        UpdateUI();           
+        
         if(Input.GetKeyDown(KeyCode.F))
             OnToggleFill();
         if(Input.GetKeyDown(KeyCode.B))
             OnBrewButtonClick();
         if(Input.GetKeyDown(KeyCode.C))
-            OnCollectButtonClick();        
+            OnCollectButtonClick(); 
+       
     }
 }

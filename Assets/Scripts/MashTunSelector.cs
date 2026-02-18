@@ -55,7 +55,6 @@ public class MashTunSelector : MonoBehaviour
     void Start()
     {
         selectedMashTun = null;
-        mashTunWindow.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
