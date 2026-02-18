@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MashTunSelector : MonoBehaviour
@@ -7,13 +8,23 @@ public class MashTunSelector : MonoBehaviour
     public MashTunWindow mashTunWindow;
     public MashTun selectedMashTun;
 
+    [Header("Keyboard Navigation")]
+    public List<MashTun> allTuns = new List<MashTun>();
+
     public void SelectMashTun(MashTun tun)
     {
         selectedMashTun = tun;
         mashTunWindow.tun = tun;
+        mashTunWindow.gameObject.SetActive(true);
         mashTunWindow.UpdateUI();
 
         Debug.Log($"Selected mashtun: {tun.gameObject.name}");
+    }
+
+    public void DeselectMashTun()
+    {
+        mashTunWindow.gameObject.SetActive(false);
+        Debug.Log($"Clicked away from tuns");
     }
     // Start is called before the first frame update
     void Start()
@@ -35,6 +46,14 @@ public class MashTunSelector : MonoBehaviour
                 {
                     SelectMashTun(clickedTun);
                 }
+                else
+                {
+                    DeselectMashTun();
+                }
+            }
+            else
+            {
+                DeselectMashTun();
             }
         }
     }

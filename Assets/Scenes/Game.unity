@@ -4727,6 +4727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MashTunWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 8238127759079129813, guid: dcd24ab14bda8dd8fa56992680171e41, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8367802309818580266, guid: dcd24ab14bda8dd8fa56992680171e41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
