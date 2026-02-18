@@ -90,6 +90,13 @@ public class MashTunWindow : MonoBehaviour
     void Update()
     {
        // Debug.Log(tun.waterLevel);
-       UpdateUI();
+        UpdateUI();
+        if(tun == null) return;
+        if(Input.GetKeyDown(KeyCode.F))
+            OnToggleFill();
+        if(Input.GetKeyDown(KeyCode.B))
+            OnBrewButtonClick();
+        if(Input.GetKeyDown(KeyCode.C))
+            OnCollectButtonClick();        
     }
 }

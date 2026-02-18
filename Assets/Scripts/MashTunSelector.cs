@@ -67,7 +67,7 @@ public class MashTunSelector : MonoBehaviour
         }
 
         if(Input.GetMouseButtonDown(0))
-        {
+        {              
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if(Physics.Raycast(ray, out hit))
@@ -77,12 +77,12 @@ public class MashTunSelector : MonoBehaviour
                 {
                     SelectMashTun(clickedTun);
                 }
-                else
+                else if(!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                 {
                     DeselectMashTun();
                 }
             }
-            else
+            else if(!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
                 DeselectMashTun();
             }
