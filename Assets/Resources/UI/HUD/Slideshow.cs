@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// This class traverses through slides' children one by one,
+// only keeping a single child active at any time.
+// After reaching the last child, calling NextSlide() will cause
+// this.gameObject to become disabled.
 public class Slideshow : MonoBehaviour
 {
-    public bool enableTutorial;
+    public bool enableSlideshow;
     public GameObject slides;
     private int _activeSlideIndex = 0;
 
@@ -25,7 +29,7 @@ public class Slideshow : MonoBehaviour
 
     void Start()
     {
-        if (!enableTutorial) Hide();
+        if (!enableSlideshow) Hide();
     }
 
     void Update()
