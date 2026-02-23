@@ -18,11 +18,23 @@ public class HoverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        Highlight();
+    }
+
+    public void Highlight()
+    {
         _renderer.material = highlightMaterial;
+        
+    }
+
+    public void RemoveHighlight()
+    {
+        _renderer.material = _fallbackMaterial;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        RemoveHighlight();
         _renderer.material = _fallbackMaterial;
     }
 
