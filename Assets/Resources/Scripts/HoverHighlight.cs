@@ -34,7 +34,8 @@ public class HoverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        RemoveHighlight();
+        SelectHighlight selectHighlight = GetComponent<SelectHighlight>();
+        if (selectHighlight != null && selectHighlight.IsSelected) return;
         _renderer.material = _fallbackMaterial;
     }
 

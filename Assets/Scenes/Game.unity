@@ -362,7 +362,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -988,7 +988,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -1192,6 +1192,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 553088989}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 553088990}
   m_SourcePrefab: {fileID: 100100000, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
 --- !u!4 &553088986 stripped
 Transform:
@@ -1249,6 +1252,20 @@ MonoBehaviour:
   _maxWaterLevel: 10
   _optimalWaterLevel: 7
   _tolerance: 4
+--- !u!114 &553088990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471271431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc084b483e2a2bd47b55542cb3343452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedMaterial: {fileID: 2100000, guid: c483583185f3cdc4c8a264523c232493, type: 2}
+  highlightedObject: {fileID: 856083539}
 --- !u!1 &644425698 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2682847331518883396, guid: dcd24ab14bda8dd8fa56992680171e41, type: 3}
@@ -1364,6 +1381,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6142225322230787471, guid: 127b52732a638c66a8b45009fac34450, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567518511560864114, guid: 127b52732a638c66a8b45009fac34450, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1667,6 +1688,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1144605141}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1144605142}
   m_SourcePrefab: {fileID: 100100000, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
 --- !u!4 &867069301 stripped
 Transform:
@@ -1923,7 +1947,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2253,7 +2277,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -2861,6 +2885,20 @@ MonoBehaviour:
   _maxWaterLevel: 10
   _optimalWaterLevel: 7
   _tolerance: 4
+--- !u!114 &1144605142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144605138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc084b483e2a2bd47b55542cb3343452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedMaterial: {fileID: 2100000, guid: c483583185f3cdc4c8a264523c232493, type: 2}
+  highlightedObject: {fileID: 886295822}
 --- !u!1 &1150669029 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5340137376448927479, guid: dcd24ab14bda8dd8fa56992680171e41, type: 3}
@@ -3116,7 +3154,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -3482,7 +3520,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -3592,7 +3630,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -4727,6 +4765,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MashTunWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 8238127759079129813, guid: dcd24ab14bda8dd8fa56992680171e41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8367802309818580266, guid: dcd24ab14bda8dd8fa56992680171e41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -4843,6 +4885,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mashTunWindow: {fileID: 2066322357}
   selectedMashTun: {fileID: 0}
+  allTuns:
+  - {fileID: 1144605141}
+  - {fileID: 553088989}
 --- !u!4 &2076390293
 Transform:
   m_ObjectHideFlags: 0
@@ -4983,7 +5028,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
