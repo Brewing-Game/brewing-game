@@ -4,13 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(MashTun))]
 public class MashTunSelector : MonoBehaviour
 {
     public MashTunWindow mashTunWindow;
     public MashTun selectedMashTun;
-    private MashTun _thisMashTun;
-
     [Header("Keyboard Navigation")]
     public List<MashTun> allTuns = new List<MashTun>();
 
@@ -58,7 +55,6 @@ public class MashTunSelector : MonoBehaviour
     void Start()
     {
         selectedMashTun = null;
-        _thisMashTun = gameObject.GetComponent<MashTun>();
     }
 
     // Update is called once per frame
@@ -76,7 +72,7 @@ public class MashTunSelector : MonoBehaviour
             if(Physics.Raycast(ray, out RaycastHit hit))
             {
                 MashTun clickedTun = hit.collider.GetComponent<MashTun>();
-                if(clickedTun == _thisMashTun)
+                if(clickedTun != null)
                 {
                     SelectMashTun(clickedTun);
                 }
