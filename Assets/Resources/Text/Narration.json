@@ -1,0 +1,35 @@
+{
+    "intro": 
+    [  
+        "Welcome to your brewery!",
+        "Click on a mash tun to open its control panel."
+    ],
+    "firstBrew": 
+    [
+        "That wasn't so easy, was it?",
+        "Don't worry, keep earning points to access the shop where you can buy some tools to assist in the process."
+    ],
+    "feedbackUnder":
+    [
+        "This batch is too strong. Try adding more water next time."
+    ],
+    "feedbackOver":
+    [
+        "This batch is too diluted. You added too much water. Try again!"
+    ],
+    "feedbackPerfect":
+    [
+        "Excellent! The water level was perfect and the flavour is well balanced."
+    ],
+    "shopUnlocked":
+    [
+        "You've earned enough points to purchase an upgrade.",
+        "Click on the shop icon to view the instruments for sale."
+    ],
+    "installedWaterSensor":
+    [
+        "You've successfully installed the water level sensor.",
+        "This tool will allow you to view the precise water level as the mash tun fills.",
+        "This should help a lot! Try brewing another batch to see the sensor in action."
+    ]
+}
