@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MashTunSelector : MonoBehaviour
 {
     public MashTunWindow mashTunWindow;
     public MashTun selectedMashTun;
-
     [Header("Keyboard Navigation")]
     public List<MashTun> allTuns = new List<MashTun>();
 
@@ -68,8 +68,8 @@ public class MashTunSelector : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {              
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if(Physics.Raycast(ray, out hit))
+
+            if(Physics.Raycast(ray, out RaycastHit hit))
             {
                 MashTun clickedTun = hit.collider.GetComponent<MashTun>();
                 if(clickedTun != null)
