@@ -9,6 +9,7 @@ using UnityEngine;
 public class Slideshow : MonoBehaviour
 {
     public bool enableSlideshow;
+    public bool enableNarration;
     public GameObject slides;
     private int _activeSlideIndex = 0;
 
@@ -22,7 +23,7 @@ public class Slideshow : MonoBehaviour
         Hide();
     }
 
-    public void Hide()
+    private void Hide()
     {
         gameObject.SetActive(false);
     }
@@ -32,6 +33,17 @@ public class Slideshow : MonoBehaviour
         if (!enableSlideshow) Hide();
     }
 
+    private void ToggleNarration(int i)
+    {
+        foreach(Transform child in slides.transform.GetChild(i).transform)
+        {
+            if (child.gameObject.name == "Narration" && !enableNarration)
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+    }
+
     void Update()
     {
         for (int i = 0; i < slides.transform.childCount; i ++)
@@ -39,6 +51,7 @@ public class Slideshow : MonoBehaviour
             if (i == _activeSlideIndex)
             {
                 slides.transform.GetChild(i).gameObject.SetActive(true);
+                ToggleNarration(i);
             }
             else
             {
