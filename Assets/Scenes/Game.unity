@@ -4251,6 +4251,10 @@ PrefabInstance:
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 833444484918183970, guid: d06a412d55cd5f151982fb0bb15da896, type: 3}
+      propertyPath: enableNarration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833444484918183970, guid: d06a412d55cd5f151982fb0bb15da896, type: 3}
       propertyPath: enableSlideshow
       value: 1
       objectReference: {fileID: 0}
