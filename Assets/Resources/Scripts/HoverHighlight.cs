@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 // when mouse enters collision with this.gameObject. 
 
 [RequireComponent(typeof(Collider))]
-public class HoverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class HoverHighlight : MonoBehaviour
 {
 
     public Material highlightMaterial;      // Material applied when highlighting.
@@ -23,20 +23,28 @@ public class HoverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void Highlight()
     {
-        _renderer.material = highlightMaterial;
+        if (_renderer == null || highlightMaterial == null) return;
+        var selectHighlight = GetComponent<SelectHighlight>();
+        if (selectHighlight != null && selectHighlight.IsSelected) return;
         
+        _renderer.material = highlightMaterial;        
     }
 
     public void RemoveHighlight()
     {
-        _renderer.material = _fallbackMaterial;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        SelectHighlight selectHighlight = GetComponent<SelectHighlight>();
+        if (_renderer == null || highlightMaterial == null) return;
+        var selectHighlight = GetComponent<SelectHighlight>();
         if (selectHighlight != null && selectHighlight.IsSelected) return;
         _renderer.material = _fallbackMaterial;
+    }
+    void Awake()
+    {
+        _renderer = highlightedObject.GetComponent<Renderer>();
+        if(!_renderer)
+        {
+            Debug.LogWarning("HoverHighlight: Renderer not found in highlightedObject.");
+        }      
+        _fallbackMaterial = _renderer != null ? _renderer.material : null;         
     }
 
     void Start()

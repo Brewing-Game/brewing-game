@@ -283,11 +283,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7939046240973136640, guid: 24657d01e02b79cab998d2bb67c5ec6d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7939046240973136640, guid: 24657d01e02b79cab998d2bb67c5ec6d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -19
       objectReference: {fileID: 0}
     - target: {fileID: 7939046240973136640, guid: 24657d01e02b79cab998d2bb67c5ec6d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2054,7 +2054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3866,7 +3866,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10, y: -10}
+  m_AnchoredPosition: {x: -19, y: -17}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1601784666
@@ -4368,6 +4368,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8487201596275748091, guid: d06a412d55cd5f151982fb0bb15da896, type: 3}
   m_PrefabInstance: {fileID: 1625427733}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1700432602 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 833444484918183970, guid: d06a412d55cd5f151982fb0bb15da896, type: 3}
+  m_PrefabInstance: {fileID: 1625427733}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e95ce904c6fd037b8463f292f914ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1751849501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4637,7 +4648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5023,6 +5034,7 @@ MonoBehaviour:
   allTuns:
   - {fileID: 1144605141}
   - {fileID: 553088989}
+  tutorialSlideshow: {fileID: 1700432602}
 --- !u!4 &2076390293
 Transform:
   m_ObjectHideFlags: 0
