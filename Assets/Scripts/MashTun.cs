@@ -19,7 +19,8 @@ public class MashTun : MonoBehaviour
     private float _tolerance;
     [SerializeField]
     public float optimalWaterLevel => _optimalWaterLevel;
-    private float _fillRate = 0.5f;
+    [SerializeField]
+    public float fillRate = 0.5f;
     private List<IInstrument> instruments = new List<IInstrument>();
 
     private bool _isFilling = false;
@@ -39,7 +40,7 @@ public class MashTun : MonoBehaviour
 
     public void FillMashTun()
     {
-        _waterLevel += _fillRate * Time.deltaTime; 
+        _waterLevel += fillRate * Time.deltaTime; 
         _waterLevel = Mathf.Min(_waterLevel, _maxWaterLevel);
         foreach(var instrument in instruments)
         {
