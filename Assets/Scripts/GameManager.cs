@@ -4,19 +4,23 @@ using System.ComponentModel.Design;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     //singleton pattern using static to insure just one game manager
     public static GameManager Instance { get; set; }
 
+    public event Action<int> OnPointsChanged; //notify subscribers that points have changed
+
     [Header("Game State")]
     public bool isGameActive = false;
     private int _totalPoints = 0;
+    public int totalPoints => _totalPoints;
 
     [Header("Win Condition")]   
-    [SerializeField] private int _pointsToWin = 30;
-    private int _startPoints = 0;
+    [SerializeField] private int _pointsToWin = 1000;
+    [SerializeField] private int _startPoints = 0;
 
     [Header("UI")]
     [SerializeField] private GameObject _winPanel;
@@ -47,7 +51,10 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isGameActive = true;
-        playerScoreIndicator.Score = _startPoints;        
+        _totalPoints = _startPoints;
+        playerScoreIndicator.Score = _totalPoints;
+        OnPointsChanged?.Invoke(_totalPoints);
+
         if(_winPanel != null)
         {
             _winPanel.SetActive(false);
@@ -66,6 +73,7 @@ public class GameManager : MonoBehaviour
         {
             playerScoreIndicator.Score = _totalPoints;
         }
+        OnPointsChanged?.Invoke(_totalPoints);
     }
 
     private void CheckWinCondition()
