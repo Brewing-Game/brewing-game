@@ -144,8 +144,7 @@ public class MashTunWindow : MonoBehaviour
     }
 
     void Update()
-    {
-       // Debug.Log(tun.waterLevel);        
+    {           
         UpdateUI();           
         
         if(Input.GetKeyDown(KeyCode.F))

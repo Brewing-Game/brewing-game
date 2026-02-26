@@ -16,11 +16,6 @@ public class HoverHighlight : MonoBehaviour
     private Material _fallbackMaterial;     // The original Material.
     private Renderer _renderer;             // The component that stores the Material.
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        Highlight();
-    }
-
     public void Highlight()
     {
         if (_renderer == null || highlightMaterial == null) return;

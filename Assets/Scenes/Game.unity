@@ -1005,10 +1005,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebug: 0
-  _maxWaterLevel: 10
-  _optimalWaterLevel: 7
-  _tolerance: 4
-  fillRate: 0.5
+  _maxWaterLevel: 100
+  _optimalWaterLevel: 70
+  _tolerance: 30
+  fillRate: 10
 --- !u!114 &553088990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2522,10 +2522,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebug: 0
-  _maxWaterLevel: 10
-  _optimalWaterLevel: 7
-  _tolerance: 4
-  fillRate: 0.5
+  _maxWaterLevel: 100
+  _optimalWaterLevel: 70
+  _tolerance: 30
+  fillRate: 10
 --- !u!114 &1144605142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2548,6 +2548,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 818010470}
     m_Modifications:
+    - target: {fileID: 4992469255448112560, guid: 1910d9459c6d14944829f9d58f3bf016, type: 3}
+      propertyPath: upgradeCost
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7772565539350145846, guid: 1910d9459c6d14944829f9d58f3bf016, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

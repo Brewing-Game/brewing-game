@@ -99,7 +99,7 @@ public class MashTun : MonoBehaviour
         {
             return 0;
         }
-        return 10 - (difference * 10/_tolerance);
+        return 100 - (difference * 100/_tolerance);
     }
 
     public void AddInstrument(IInstrument instrument)

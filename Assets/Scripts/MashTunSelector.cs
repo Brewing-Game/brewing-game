@@ -89,13 +89,33 @@ public class MashTunSelector : MonoBehaviour
         return tutorialSlideshow != null && tutorialSlideshow.gameObject.activeInHierarchy;
     }
 
+    //private MashTun GetTargetTun()
+    //{
+    //    if (!Camera.main) return null;
+//
+    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //    if (Physics.Raycast(ray, out RaycastHit hit))
+    //    {            
+    //        return hit.collider.GetComponentInParent<MashTun>();
+    //    }
+    //    return null;
+    //}
+
+
     private MashTun GetTargetTun()
     {
         if (!Camera.main) return null;
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {            
+        int layerMask = LayerMask.GetMask("UI");
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
+        {
+            return null; 
+        }
+
+        layerMask = LayerMask.GetMask("testLayer");
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        {
             return hit.collider.GetComponentInParent<MashTun>();
         }
         return null;
@@ -122,17 +142,16 @@ public class MashTunSelector : MonoBehaviour
         //click input
         if(Input.GetMouseButtonDown(0))
         {              
-            targetTun = GetTargetTun();
+            targetTun = GetTargetTun();           
 
             if (targetTun != null)
             {
                 SelectMashTun(targetTun);
                 return; //ok, it's a mashtun
-            }
-
+            } 
+            
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
                 return; //ok, it's ui
-
             
             DeselectMashTun(); //no mashtun nor ui clicked
         }

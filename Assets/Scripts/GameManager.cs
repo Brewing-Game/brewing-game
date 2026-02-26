@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour
         _totalPoints = _startPoints;
         playerScoreIndicator.Score = _totalPoints;
         OnPointsChanged?.Invoke(_totalPoints);
-
+        
         if(_winPanel != null)
         {
             _winPanel.SetActive(false);
