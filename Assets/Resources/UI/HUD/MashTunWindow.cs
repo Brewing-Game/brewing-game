@@ -72,7 +72,7 @@ public class MashTunWindow : MonoBehaviour
         {
             Debug.Log("Clicked stop button");            
             tun.StopWaterFlow();
-            fillButtonLabel.text = ("Fill");            
+            fillButtonLabel.text = ("Fill");                        
         }        
     }
 
@@ -119,11 +119,18 @@ public class MashTunWindow : MonoBehaviour
     {
         if (tun == null) return;
 
-        if (fillButtonLabel == null || upgradeButton == null || waterLevel == null) return;
+        //if (fillButtonLabel == null || upgradeButton == null || waterLevel == null) return;
 
         var viewModel = tun.GetViewModel();
+
         fillButtonLabel.text = viewModel.FillButtonLabel;
+        fillButton.interactable = viewModel.isFillButtonInteractible;
+
         upgradeButton.gameObject.SetActive(viewModel.ShowUpgradeButton);
+
+        brewButton.interactable = viewModel.isBrewButtonInteractible;
+        collectButton.interactable = viewModel.isCollectButtonInteractible;
+
         waterLevel.gameObject.SetActive(viewModel.ShowWaterLevelSlider);
         waterLevel.value = viewModel.WaterLevelPercentage;
     }
@@ -131,8 +138,7 @@ public class MashTunWindow : MonoBehaviour
     {
         if (fillButtonLabel == null && fillButton != null)
             fillButtonLabel = fillButton.GetComponentInChildren<TMP_Text>(true);
-            
-        fillButtonLabel = fillButton.GetComponentInChildren<TMP_Text>(true);        
+                       
         fillButton.onClick.AddListener(OnToggleFill);
         brewButton.onClick.AddListener(OnBrewButtonClick);
         upgradeButton.onClick.AddListener(OnUpgradeButtonClick);
@@ -140,7 +146,6 @@ public class MashTunWindow : MonoBehaviour
     }
     void Start()
     {   
-        
     }
 
     void Update()

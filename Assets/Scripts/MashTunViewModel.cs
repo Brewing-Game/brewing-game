@@ -8,4 +8,7 @@ public class MashTunViewModel
     public bool ShowUpgradeButton;    
     public bool ShowWaterLevelSlider;
     public float WaterLevelPercentage;   
+    public bool isBrewButtonInteractible;
+    public bool isCollectButtonInteractible;
+    public bool isFillButtonInteractible;
 }

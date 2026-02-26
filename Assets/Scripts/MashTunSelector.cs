@@ -89,20 +89,20 @@ public class MashTunSelector : MonoBehaviour
         return tutorialSlideshow != null && tutorialSlideshow.gameObject.activeInHierarchy;
     }
 
-    //private MashTun GetTargetTun()
-    //{
-    //    if (!Camera.main) return null;
-//
-    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    //    if (Physics.Raycast(ray, out RaycastHit hit))
-    //    {            
-    //        return hit.collider.GetComponentInParent<MashTun>();
-    //    }
-    //    return null;
-    //}
-
-
     private MashTun GetTargetTun()
+    {
+        if (!Camera.main) return null;
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {            
+            return hit.collider.GetComponentInParent<MashTun>();
+        }
+        return null;
+    }
+
+
+    /*private MashTun GetTargetTun()
     {
         if (!Camera.main) return null;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -119,7 +119,7 @@ public class MashTunSelector : MonoBehaviour
             return hit.collider.GetComponentInParent<MashTun>();
         }
         return null;
-    }
+    }*/
 
     void Update()
     {
