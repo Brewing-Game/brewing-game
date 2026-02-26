@@ -117,9 +117,7 @@ public class MashTunWindow : MonoBehaviour
     
     public void UpdateUI()
     {
-        if (tun == null) return;
-
-        //if (fillButtonLabel == null || upgradeButton == null || waterLevel == null) return;
+        if (tun == null) return;        
 
         var viewModel = tun.GetViewModel();
 
