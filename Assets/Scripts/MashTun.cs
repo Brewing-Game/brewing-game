@@ -37,8 +37,7 @@ public class MashTun : MonoBehaviour
     public void StopWaterFlow()
     {
         _isFilling = false;
-        viewModel.FillButtonLabel = "Fill";
-        //viewModel.isBrewButtonInteractible = true;
+        viewModel.FillButtonLabel = "Fill";        
     }
 
     public void FillMashTun()
@@ -62,8 +61,7 @@ public class MashTun : MonoBehaviour
 
     private IEnumerator BrewingProcess()
     {
-        _isBrewing = true;
-        //viewModel.isFillButtonInteractible = false;
+        _isBrewing = true;        
         
         foreach(var instrument in instruments)
         {
@@ -77,8 +75,7 @@ public class MashTun : MonoBehaviour
         
         _hasBrewed = true;
         _isBrewing = false;
-        //viewModel.isCollectButtonInteractible = true;        
-        
+                
         Debug.Log("Brewing complete");
     }
 
@@ -93,9 +90,7 @@ public class MashTun : MonoBehaviour
             }
             _waterLevel = 0;
             _hasBrewed = false;
-            //viewModel.isFillButtonInteractible = true;
-            //viewModel.isBrewButtonInteractible = false;
-            //viewModel.isCollectButtonInteractible = false;
+
             return points;
         }
         return 0;
