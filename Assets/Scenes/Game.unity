@@ -2541,7 +2541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameActive: 0
   _pointsToWin: 1000
-  _startPoints: 0
+  _startPoints: 100
   _winPanel: {fileID: 1022897097}
   _winMessageText: {fileID: 1857910151}
   playerScoreIndicator: {fileID: 262320340}
