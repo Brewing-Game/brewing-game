@@ -19,8 +19,10 @@ public class MashTun : MonoBehaviour
     private float _tolerance;
     [SerializeField]
     public float optimalWaterLevel => _optimalWaterLevel;
-    private float _fillRate = 0.5f;
+    [SerializeField]
+    public float fillRate = 0.5f;
     private List<IInstrument> instruments = new List<IInstrument>();
+    public MashTunViewModel viewModel;
 
     private bool _isFilling = false;
     public bool isFilling => _isFilling;
@@ -35,12 +37,14 @@ public class MashTun : MonoBehaviour
     public void StopWaterFlow()
     {
         _isFilling = false;
+        viewModel.FillButtonLabel = "Fill";        
     }
 
     public void FillMashTun()
     {
-        _waterLevel += _fillRate * Time.deltaTime; 
+        _waterLevel += fillRate * Time.deltaTime; 
         _waterLevel = Mathf.Min(_waterLevel, _maxWaterLevel);
+        viewModel.FillButtonLabel = "Stop";
         foreach(var instrument in instruments)
         {
             instrument.OnMashTunFill();
@@ -57,7 +61,7 @@ public class MashTun : MonoBehaviour
 
     private IEnumerator BrewingProcess()
     {
-        _isBrewing = true;
+        _isBrewing = true;        
         
         foreach(var instrument in instruments)
         {
@@ -71,7 +75,7 @@ public class MashTun : MonoBehaviour
         
         _hasBrewed = true;
         _isBrewing = false;
-        
+                
         Debug.Log("Brewing complete");
     }
 
@@ -86,6 +90,7 @@ public class MashTun : MonoBehaviour
             }
             _waterLevel = 0;
             _hasBrewed = false;
+
             return points;
         }
         return 0;
@@ -98,7 +103,7 @@ public class MashTun : MonoBehaviour
         {
             return 0;
         }
-        return 10 - (difference * 10/_tolerance);
+        return 100 - (difference * 100/_tolerance);
     }
 
     public void AddInstrument(IInstrument instrument)
@@ -120,28 +125,40 @@ public class MashTun : MonoBehaviour
     }
 
     public MashTunViewModel GetViewModel()
-    {
-        var viewModel = new MashTunViewModel
-        {
-            FillButtonLabel = _isFilling ? "Stop" : "Fill",
-            ShowUpgradeButton = true,
-            ShowWaterLevelSlider = false,
-            WaterLevelPercentage = _waterLevel / _maxWaterLevel
-        };
-
+    {        
         foreach(var instrument in instruments)
         {
             instrument.UpdateViewModel(viewModel, this);
         }
 
-        return viewModel;
+        bool isEmpty = _waterLevel <= 0.0001f;
+        bool canBrew = !_isFilling && !_isBrewing && !isEmpty && !_hasBrewed;
+        bool canFill = !_isBrewing && !_hasBrewed;         // if brewed, must collect first
+        bool canCollect = _hasBrewed && !_isBrewing;
 
+        viewModel.FillButtonLabel = _isFilling ? "Stop" : "Fill";
+        viewModel.WaterLevelPercentage = (_maxWaterLevel <= 0f) ? 0f : (_waterLevel / _maxWaterLevel);
+
+        viewModel.isFillButtonInteractible = canFill;
+        viewModel.isBrewButtonInteractible = canBrew;
+        viewModel.isCollectButtonInteractible = canCollect;
+
+        return viewModel;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-       
+       viewModel = new MashTunViewModel
+       {
+            FillButtonLabel = _isFilling ? "Stop" : "Fill",
+            ShowUpgradeButton = true,
+            ShowWaterLevelSlider = false,
+            WaterLevelPercentage = _waterLevel / _maxWaterLevel,
+            isBrewButtonInteractible = false,
+            isCollectButtonInteractible = false,
+            isFillButtonInteractible = true
+       };
     }
 
     // Update is called once per frame

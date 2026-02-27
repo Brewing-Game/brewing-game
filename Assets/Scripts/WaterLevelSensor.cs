@@ -15,8 +15,7 @@ public class WaterLevelSensor : IInstrument
     private Coroutine _colorTransitionCoroutine;
 
     private Color _currentColor;
-    private bool _isBrewing = false;
-
+    
     public WaterLevelSensor(Slider sliderUI)
     {
         this._waterLevelSlider = sliderUI;
@@ -71,7 +70,7 @@ public class WaterLevelSensor : IInstrument
         }
         
         _currentColor = beerColor;
-        _isBrewing = false;
+        
     }
 
     public void OnCollectBeer()
