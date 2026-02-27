@@ -13,13 +13,22 @@ public class SelectHighlight : MonoBehaviour
     public void Select()
     {
         IsSelected = true;
-        _renderer.material = selectedMaterial;
+        if (_renderer != null && selectedMaterial != null)
+            _renderer.material = selectedMaterial;
     }
 
     public void Deselect()
     {
         IsSelected = false;
-        _renderer.material = _fallbackMaterial;
+        if (_renderer != null && _fallbackMaterial != null)
+            _renderer.material = _fallbackMaterial;
+    }
+
+    void Awake()
+    {
+        _renderer = highlightedObject.GetComponent<Renderer>();
+        if(_renderer == null) Debug.LogWarning("SelectHighlight: Renderer missing");
+        _fallbackMaterial = _renderer ? _renderer.material : null;
     }
 
     void Start()

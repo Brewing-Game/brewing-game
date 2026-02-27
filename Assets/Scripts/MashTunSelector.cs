@@ -8,8 +8,18 @@ public class MashTunSelector : MonoBehaviour
 {
     public MashTunWindow mashTunWindow;
     public MashTun selectedMashTun;
+    private MashTun _hoveredMashTun; //mashtun selector uniquely handles input logic
     [Header("Keyboard Navigation")]
     public List<MashTun> allTuns = new List<MashTun>();
+    [Header("Tutorial")]
+    public Slideshow tutorialSlideshow; //to track tutorial state
+    
+    void Start()
+    {
+        selectedMashTun = null;
+        SetHovered(null);
+        if(mashTunWindow) mashTunWindow.gameObject.SetActive(false);
+    }
 
     public void CycleThroughTuns()
     {
@@ -30,10 +40,16 @@ public class MashTunSelector : MonoBehaviour
     public void SelectMashTun(MashTun tun)
     {
         if (selectedMashTun != null)
+        {
             selectedMashTun.GetComponent<SelectHighlight>()?.Deselect();
 
-        selectedMashTun = tun;
+            //not sure about this
+            if (selectedMashTun == _hoveredMashTun)
+                selectedMashTun.GetComponent<HoverHighlight>()?.Highlight();
+        }       
+
         tun.GetComponent<SelectHighlight>()?.Select();
+        selectedMashTun = tun;
 
         mashTunWindow.tun = tun;
         mashTunWindow.gameObject.SetActive(true);
@@ -45,46 +61,99 @@ public class MashTunSelector : MonoBehaviour
     public void DeselectMashTun()
     {
         if (selectedMashTun != null)
+        {
             selectedMashTun.GetComponent<SelectHighlight>()?.Deselect();
+
+            //not sure either
+            if (selectedMashTun == _hoveredMashTun)
+                selectedMashTun.GetComponent<HoverHighlight>()?.Highlight();
+        }
 
         selectedMashTun = null;
         mashTunWindow.gameObject.SetActive(false);
         Debug.Log($"Clicked away from tuns");
     }
-    // Start is called before the first frame update
-    void Start()
+    public void SetHovered(MashTun currentHover)
     {
-        selectedMashTun = null;
+        if(_hoveredMashTun == currentHover) return;
+        //remove highlight from old hovered tun
+        if(_hoveredMashTun != null && _hoveredMashTun != selectedMashTun)
+            _hoveredMashTun.GetComponent<HoverHighlight>()?.RemoveHighlight();
+        _hoveredMashTun = currentHover;
+        //add highlight to current hovered tun
+        if (_hoveredMashTun != null && _hoveredMashTun != selectedMashTun)
+            _hoveredMashTun.GetComponent<HoverHighlight>()?.Highlight();
+    }
+    private bool IsTutorialBlocking()
+    {
+        return tutorialSlideshow != null && tutorialSlideshow.gameObject.activeInHierarchy;
     }
 
-    // Update is called once per frame
+    private MashTun GetTargetTun()
+    {
+        if (!Camera.main) return null;
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {            
+            return hit.collider.GetComponentInParent<MashTun>();
+        }
+        return null;
+    }
+
+
+    /*private MashTun GetTargetTun()
+    {
+        if (!Camera.main) return null;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        int layerMask = LayerMask.GetMask("UI");
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
+        {
+            return null; 
+        }
+
+        layerMask = LayerMask.GetMask("testLayer");
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        {
+            return hit.collider.GetComponentInParent<MashTun>();
+        }
+        return null;
+    }*/
+
     void Update()
     {
+        //if tutorial is active don't detect mashtun inputs
+        if (IsTutorialBlocking())
+        {
+            SetHovered(null);
+            return;
+        }
+        //keyboard input tab cycling
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             CycleThroughTuns();
         }
 
+
+        var targetTun = GetTargetTun();
+        SetHovered(targetTun);        
+
+        //click input
         if(Input.GetMouseButtonDown(0))
         {              
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            targetTun = GetTargetTun();           
 
-            if(Physics.Raycast(ray, out RaycastHit hit))
+            if (targetTun != null)
             {
-                MashTun clickedTun = hit.collider.GetComponent<MashTun>();
-                if(clickedTun != null)
-                {
-                    SelectMashTun(clickedTun);
-                }
-                else if(!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-                {
-                    DeselectMashTun();
-                }
-            }
-            else if(!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-            {
-                DeselectMashTun();
-            }
+                SelectMashTun(targetTun);
+                return; //ok, it's a mashtun
+            } 
+            
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return; //ok, it's ui
+            
+            DeselectMashTun(); //no mashtun nor ui clicked
         }
-    }
+    }    
 }
