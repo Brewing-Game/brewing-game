@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+// This class provides MashTun-specific functionalities.
 public class MashTun : MonoBehaviour
 {
     [SerializeField]

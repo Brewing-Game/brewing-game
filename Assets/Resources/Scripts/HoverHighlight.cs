@@ -9,17 +9,15 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Collider))]
 public class HoverHighlight : MonoBehaviour
 {
-
     public Material highlightMaterial;      // Material applied when highlighting.
     public GameObject highlightedObject;    // The object with a Renderer component.
-
     private Material _fallbackMaterial;     // The original Material.
     private Renderer _renderer;             // The component that stores the Material.
 
     public void Highlight()
     {
         if (_renderer == null || highlightMaterial == null) return;
-        var selectHighlight = GetComponent<SelectHighlight>();
+        var selectHighlight = GetComponent<SelectionHighlight>();
         if (selectHighlight != null && selectHighlight.IsSelected) return;
         
         _renderer.material = highlightMaterial;        
@@ -28,7 +26,7 @@ public class HoverHighlight : MonoBehaviour
     public void RemoveHighlight()
     {
         if (_renderer == null || highlightMaterial == null) return;
-        var selectHighlight = GetComponent<SelectHighlight>();
+        var selectHighlight = GetComponent<SelectionHighlight>();
         if (selectHighlight != null && selectHighlight.IsSelected) return;
         _renderer.material = _fallbackMaterial;
     }

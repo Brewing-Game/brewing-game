@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6854811928238569378
+--- !u!1001 &5651767945403012464
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -64,54 +64,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: mashtun1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7433517568379310151}
+      addedObject: {fileID: 3078170103973573141}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2600133156741715032}
+      addedObject: {fileID: 2820864315377303316}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6201347155133866767}
+      addedObject: {fileID: 2403583191934825161}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3352155491225637620}
+      addedObject: {fileID: 3258780447081677345}
   m_SourcePrefab: {fileID: 100100000, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
---- !u!1 &3345485201507316266 stripped
+--- !u!1 &4549690266541478136 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
-  m_PrefabInstance: {fileID: 6854811928238569378}
+  m_PrefabInstance: {fileID: 5651767945403012464}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6043908698765003507 stripped
+--- !u!1 &4804906295169820705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b305f76e9132af3479b8d158ef24d90d, type: 3}
-  m_PrefabInstance: {fileID: 6854811928238569378}
+  m_PrefabInstance: {fileID: 5651767945403012464}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7433517568379310151
+--- !u!114 &3078170103973573141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6043908698765003507}
+  m_GameObject: {fileID: 4804906295169820705}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2f1fca93daff7a72aa4e5115e076344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: bdb19b6c9c31bc06f9555a625f529cb7, type: 2}
-  highlightedObject: {fileID: 3345485201507316266}
---- !u!65 &2600133156741715032
+  highlightedObject: {fileID: 4549690266541478136}
+--- !u!65 &2820864315377303316
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6043908698765003507}
+  m_GameObject: {fileID: 4804906295169820705}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -126,34 +134,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2, y: 1.8, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6201347155133866767
+--- !u!114 &2403583191934825161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6043908698765003507}
+  m_GameObject: {fileID: 4804906295169820705}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fbf47522a2c69542bfaea1d67acadf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isDebug: 0
-  _maxWaterLevel: 10
-  _optimalWaterLevel: 7
-  _tolerance: 4
-  fillRate: 0.7
---- !u!114 &3352155491225637620
+  _maxWaterLevel: 100
+  _optimalWaterLevel: 70
+  _tolerance: 30
+  fillRate: 10
+--- !u!114 &3258780447081677345
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6043908698765003507}
+  m_GameObject: {fileID: 4804906295169820705}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc084b483e2a2bd47b55542cb3343452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   selectedMaterial: {fileID: 2100000, guid: c483583185f3cdc4c8a264523c232493, type: 2}
-  highlightedObject: {fileID: 3345485201507316266}
+  highlightedObject: {fileID: 4549690266541478136}
