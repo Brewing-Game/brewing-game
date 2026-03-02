@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5507653793270558463}
   - component: {fileID: 7724496614896147569}
   m_Layer: 0
-  m_Name: MashTunSelector
+  m_Name: Navigator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
