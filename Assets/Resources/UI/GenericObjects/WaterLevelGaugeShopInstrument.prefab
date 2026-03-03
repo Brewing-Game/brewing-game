@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Water Level Gauge
       objectReference: {fileID: 0}
+    - target: {fileID: 1382285421409493031, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
+      propertyPath: m_fontSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382285421409493031, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1756677803506333298, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -26,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1756677803506333298, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 1756677803506333298, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: m_AnchorMin.x
@@ -34,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1756677803506333298, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 1756677803506333298, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: m_SizeDelta.x
@@ -42,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1756677803506333298, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1756677803506333298, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -100,6 +108,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterLevelGaugeShopInstrument
       objectReference: {fileID: 0}
+    - target: {fileID: 3527921186124184058, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
+      propertyPath: m_MinHeight
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527921186124184058, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
+      propertyPath: m_IgnoreLayout
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527921186124184058, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
+      propertyPath: m_FlexibleWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527921186124184058, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
+      propertyPath: m_FlexibleHeight
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527921186124184058, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
+      propertyPath: m_PreferredWidth
+      value: 1350
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527921186124184058, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
+      propertyPath: m_PreferredHeight
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4405984196523172884, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: price
       value: 250
@@ -134,7 +166,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7929256774957772722, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: m_fontSize
-      value: 41.8
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929256774957772722, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
