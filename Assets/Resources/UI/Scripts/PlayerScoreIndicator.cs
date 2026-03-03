@@ -8,7 +8,7 @@ public class PlayerScoreIndicator : MonoBehaviour
     [SerializeField]
     public GameObject counter;
     private TextMeshProUGUI counterTextMesh;
-    public int Score;
+    public int score;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +22,9 @@ public class PlayerScoreIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (counterTextMesh.text != Score.ToString())
+        if (counterTextMesh.text != score.ToString())
         {
-            counterTextMesh.text = Score.ToString();
+            counterTextMesh.text = score.ToString();
         }
     }
 }

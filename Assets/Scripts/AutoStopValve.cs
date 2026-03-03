@@ -4,7 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class AutoStopValve : IInstrument
+public class AutoStopValve : Instrument
 {
     private MashTun mashTun;    
     private Coroutine _stopAtOptimalLevelCoroutine;
@@ -24,7 +24,7 @@ public class AutoStopValve : IInstrument
             yield return null;
         }
     }
-    public void OnMashTunFill()
+    public override void OnMashTunFill()
     {
         if(mashTun != null && mashTun.isFilling && _stopAtOptimalLevelCoroutine == null)
         {
@@ -36,7 +36,7 @@ public class AutoStopValve : IInstrument
             _stopAtOptimalLevelCoroutine = null;
         }
     }
-    public void OnBrewing()
+    public override void OnBrewing()
     {
         if (_stopAtOptimalLevelCoroutine != null && mashTun != null)
         {
@@ -45,22 +45,22 @@ public class AutoStopValve : IInstrument
         }
     }
 
-    public void OnCollectBeer()
+    public override void OnCollectBeer()
     {
         
     }
 
-    public GameObject GetUIElement()
+    public override GameObject GetUIElement()
     {
         return null;
     }
-    public void Install(MashTun tun)
+    public override void Install(MashTun tun)
     {
         mashTun = tun;
 
         Debug.Log("AutoStopValve installed");
     }
-    public void Uninstall()
+    public override void Uninstall()
     {
         if (_stopAtOptimalLevelCoroutine != null && mashTun != null)
         {
@@ -72,16 +72,5 @@ public class AutoStopValve : IInstrument
         Debug.Log("AutoStopValve uninstalled");
     }
 
-    public void UpdateViewModel(MashTunViewModel viewModel, MashTun tun){}
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public override void UpdateViewModel(MashTunViewModel viewModel, MashTun tun){}
 }

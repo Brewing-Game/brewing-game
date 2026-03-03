@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 // This class provides MashTun-specific functionalities.
+// Examples include: Brew, Collect, 
 public class MashTun : MonoBehaviour
 {
     [SerializeField]
@@ -22,7 +23,7 @@ public class MashTun : MonoBehaviour
     public float optimalWaterLevel => _optimalWaterLevel;
     [SerializeField]
     public float fillRate = 0.5f;
-    private List<IInstrument> instruments = new List<IInstrument>();
+    private List<Instrument> instruments = new List<Instrument>();
     public MashTunViewModel viewModel;
 
     private bool _isFilling = false;
@@ -107,7 +108,7 @@ public class MashTun : MonoBehaviour
         return 100 - (difference * 100/_tolerance);
     }
 
-    public void AddInstrument(IInstrument instrument)
+    public void AddInstrument(Instrument instrument)
     {
         if(!instruments.Contains(instrument))
         {
@@ -116,7 +117,7 @@ public class MashTun : MonoBehaviour
         }
     }
 
-    public void RemoveInstrument(IInstrument instrument)
+    public void RemoveInstrument(Instrument instrument)
     {
         if(instruments.Contains(instrument))
         {
