@@ -25,6 +25,9 @@ public class MashTun : MonoBehaviour
     public float fillRate = 0.5f;
     private List<Instrument> instruments = new List<Instrument>();
     public MashTunViewModel viewModel;
+    private Color _waterColor = new Color(0.3f, 0.5f, 0.9f);
+    private Color _beerColor = new Color(0.95f, 0.75f, 0.2f);
+    private Coroutine _colorCoroutine;
 
     private bool _isFilling = false;
     public bool isFilling => _isFilling;
@@ -72,13 +75,29 @@ public class MashTun : MonoBehaviour
         
         Debug.Log("Brewing started");
         
-        // TODO add brewing animation
+        if (_colorCoroutine != null) StopCoroutine(_colorCoroutine);
+        _colorCoroutine = StartCoroutine(TransitionColor());
+
         yield return new WaitForSeconds(5f);
         
         _hasBrewed = true;
         _isBrewing = false;
                 
         Debug.Log("Brewing complete");
+    }
+
+    private IEnumerator TransitionColor()
+    {
+        float duration = 5f;
+        float elapsed = 0f;
+        Color start = viewModel.WaterLevelColor;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            viewModel.WaterLevelColor = Color.Lerp(start, _beerColor, elapsed / duration);
+            yield return null;
+        }
+        viewModel.WaterLevelColor = _beerColor;
     }
 
     public int CollectBeer()
@@ -92,6 +111,7 @@ public class MashTun : MonoBehaviour
             }
             _waterLevel = 0;
             _hasBrewed = false;
+            viewModel.WaterLevelColor = _waterColor;
 
             return points;
         }
@@ -157,6 +177,7 @@ public class MashTun : MonoBehaviour
             ShowUpgradeButton = true,
             ShowWaterLevelSlider = false,
             WaterLevelPercentage = _waterLevel / _maxWaterLevel,
+            WaterLevelColor = _waterColor,
             isBrewButtonInteractible = false,
             isCollectButtonInteractible = false,
             isFillButtonInteractible = true

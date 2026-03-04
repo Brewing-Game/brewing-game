@@ -117,6 +117,10 @@ public class MashTunWindow : MonoBehaviour
 
         waterLevel.gameObject.SetActive(viewModel.ShowWaterLevelSlider);
         waterLevel.value = viewModel.WaterLevelPercentage;
+        
+        var fillImage = waterLevel.fillRect.GetComponent<Image>();
+        if (fillImage != null)
+            fillImage.color = viewModel.WaterLevelColor;
     }
     void Awake()
     {
