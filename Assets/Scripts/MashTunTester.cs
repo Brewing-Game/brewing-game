@@ -12,7 +12,7 @@ public class MashTunTester : MonoBehaviour
         // Create and install the water level sensor
         if (waterLevelSlider != null)
         {
-            sensor = new WaterLevelSensor(waterLevelSlider);
+            sensor = new WaterLevelSensor();
             mashTun.AddInstrument(sensor);
         }
     }

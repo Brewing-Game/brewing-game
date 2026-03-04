@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = true;
         _totalPoints = _startPoints;
-        playerScoreIndicator.Score = _totalPoints;
+        playerScoreIndicator.score = _totalPoints;
         OnPointsChanged?.Invoke(_totalPoints);
         
         if(_winPanel != null)
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
         if(playerScoreIndicator != null)
         {
-            playerScoreIndicator.Score = _totalPoints;
+            playerScoreIndicator.score = _totalPoints;
         }
         OnPointsChanged?.Invoke(_totalPoints);
     }

@@ -2,123 +2,70 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 using UnityEngine.UI;
 
-public class WaterLevelSensor : IInstrument
+// This instrument provides a preview of the infill level on each MashTun. 
+public class WaterLevelSensor : Instrument
 {
     MashTun mashTun;
-    private Slider _waterLevelSlider;
-    private Image _fillImage;
-
-    private Color waterColor = new Color(0.3f, 0.5f, 0.9f);
-    private Color beerColor = new Color(0.95f, 0.75f, 0.2f);
-    private Coroutine _colorTransitionCoroutine;
-
-    private Color _currentColor;
+    [NonSerialized]
+    public Slider waterLevelSlider;
     
-    public WaterLevelSensor(Slider sliderUI)
+
+    void Start()
     {
-        this._waterLevelSlider = sliderUI;
-        this._currentColor = waterColor;
-        if (_waterLevelSlider != null)
+        
+    }
+
+    public override void OnMashTunFill()
+    {
+        if (waterLevelSlider != null && mashTun != null)
         {
-            _waterLevelSlider.gameObject.SetActive(false);
-            _fillImage = _waterLevelSlider.fillRect.GetComponent<Image>();
-            if (_fillImage != null)
-            {
-                _fillImage.color = waterColor;
-            }
+            waterLevelSlider.value = mashTun.waterLevel / mashTun.maxWaterLevel;
         }
     }
-    public void OnMashTunFill()
-    {
-        if(_waterLevelSlider != null && mashTun != null)
-        {
-            _waterLevelSlider.value = mashTun.waterLevel / mashTun.maxWaterLevel;
-            if (_fillImage != null)
-            {
-                _fillImage.color = _currentColor;
-            }
-        }
-    }
-    public void OnBrewing()
+
+    public override void OnBrewing()
     {        
-        if (_fillImage != null && mashTun != null)
-        {
-            if (_colorTransitionCoroutine != null)
-            {
-                mashTun.StopCoroutine(_colorTransitionCoroutine);
-            }
-            _colorTransitionCoroutine = mashTun.StartCoroutine(TransitionColor());
-        }
-    }
-
-    private IEnumerator TransitionColor()
-    {
-        float duration = 5f;
-        float elapsed = 0f;
-        Color startColor = _currentColor;
-        
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            
-            _currentColor = Color.Lerp(startColor, beerColor, t);
-            
-            yield return null;
-        }
-        
-        _currentColor = beerColor;
         
     }
 
-    public void OnCollectBeer()
-    {
-        _currentColor = waterColor;
-        if(_waterLevelSlider != null)
-        {
-            if (_fillImage != null)
-            {
-                _fillImage.color = _currentColor;
-            }
-            _waterLevelSlider.value = 0;
-        }
-    }
-
-    public void UpdateViewModel(MashTunViewModel viewModel, MashTun tun)
+    public override void OnCollectBeer()
     {        
-        viewModel.ShowUpgradeButton = false;
+        if(waterLevelSlider != null)
+        {            
+            waterLevelSlider.value = 0;
+        }
+    }
+
+    public override void UpdateViewModel(MashTunViewModel viewModel, MashTun tun)
+    {        
         viewModel.ShowWaterLevelSlider = true;
-        if (_fillImage != null && _waterLevelSlider != null)
-        {
-            _fillImage.color = _currentColor;
-        }
     }
-    public GameObject GetUIElement()
+    public override GameObject GetUIElement()
     {
-        return _waterLevelSlider != null ? _waterLevelSlider.gameObject : null;
+        return waterLevelSlider != null ? waterLevelSlider.gameObject : null;
     }
-    public void Install(MashTun tun)
+    public override void Install(MashTun tun)
     {
         mashTun = tun;
-        if(_waterLevelSlider != null)
+        if(waterLevelSlider != null)
         {
-            _waterLevelSlider.gameObject.SetActive(true);
-            _waterLevelSlider.minValue = 0;
-            _waterLevelSlider.maxValue = 1;
-            _waterLevelSlider.value = 0;
+            waterLevelSlider.gameObject.SetActive(true);
+            waterLevelSlider.minValue = 0;
+            waterLevelSlider.maxValue = 1;
+            waterLevelSlider.value = 0;
         }
         Debug.Log("WaterLevelSensor installed");
     }
-    public void Uninstall()
+    public override void Uninstall()
     {
-        if(_waterLevelSlider != null)
+        if(waterLevelSlider != null)
         {
-            _waterLevelSlider.gameObject.SetActive(false);
+            waterLevelSlider.gameObject.SetActive(false);
         }
         mashTun = null;
         Debug.Log("WaterLevelSensor uninstalled");
     }
-    
 }

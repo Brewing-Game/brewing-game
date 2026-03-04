@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+// This class provides behaviour to each mash tun's "control panel".
 public class MashTunWindow : MonoBehaviour
 {
     public MashTun tun;
-
     public Button fillButton;
     public TMP_Text fillButtonLabel;
     public Button upgradeButton;
@@ -102,18 +102,6 @@ public class MashTunWindow : MonoBehaviour
             Debug.Log($"You obtained no points: {points}");
         }
     }
-
-    public void OnUpgradeButtonClick()
-    {
-        if (GameManager.Instance != null && GameManager.Instance.totalPoints < upgradeCost)
-        return;
-
-        IInstrument waterLevelSensor = new WaterLevelSensor(waterLevel);
-        IInstrument autoStopValve = new AutoStopValve();
-        tun.AddInstrument(waterLevelSensor);
-        tun.AddInstrument(autoStopValve);
-        upgradeButton.gameObject.SetActive(false);        
-    }
     
     public void UpdateUI()
     {
@@ -124,13 +112,15 @@ public class MashTunWindow : MonoBehaviour
         fillButtonLabel.text = viewModel.FillButtonLabel;
         fillButton.interactable = viewModel.isFillButtonInteractible;
 
-        upgradeButton.gameObject.SetActive(viewModel.ShowUpgradeButton);
-
         brewButton.interactable = viewModel.isBrewButtonInteractible;
         collectButton.interactable = viewModel.isCollectButtonInteractible;
 
         waterLevel.gameObject.SetActive(viewModel.ShowWaterLevelSlider);
         waterLevel.value = viewModel.WaterLevelPercentage;
+        
+        var fillImage = waterLevel.fillRect.GetComponent<Image>();
+        if (fillImage != null)
+            fillImage.color = viewModel.WaterLevelColor;
     }
     void Awake()
     {
@@ -139,7 +129,6 @@ public class MashTunWindow : MonoBehaviour
                        
         fillButton.onClick.AddListener(OnToggleFill);
         brewButton.onClick.AddListener(OnBrewButtonClick);
-        upgradeButton.onClick.AddListener(OnUpgradeButtonClick);
         collectButton.onClick.AddListener(OnCollectButtonClick);
     }
     void Start()
@@ -155,7 +144,6 @@ public class MashTunWindow : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.B))
             OnBrewButtonClick();
         if(Input.GetKeyDown(KeyCode.C))
-            OnCollectButtonClick(); 
-       
+            OnCollectButtonClick();   
     }
 }
