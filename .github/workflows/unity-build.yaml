@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          git checkout dev
+          git -c safe.directory='*' checkout dev
           unity -quit -batchmode \
           -executeMethod brewing-game.Builder.BuildProject \
           -outputPath . \
