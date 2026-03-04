@@ -1,0 +1,23 @@
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/ryboster/unity-project-builder-ghcr:latest
+      credentials:
+        username: ${{ secrets.ACCESS_UNAME }}
+        password: ${{ secrets.ACCESS_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          git checkout dev
+          unity -quit -batchmode \
+          -executeMethod brewing-game.Builder.BuildProject \
+          -outputPath . \
+          -buildTarget Linux
