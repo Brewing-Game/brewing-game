@@ -4,7 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class AutoStopValve : Instrument
+public class FloatSwitch : Instrument
 {
     private MashTun mashTun;    
     private Coroutine _stopAtOptimalLevelCoroutine;

@@ -6,7 +6,7 @@ using System;
 using UnityEngine.UI;
 
 // This instrument provides a preview of the infill level on each MashTun. 
-public class WaterLevelSensor : Instrument
+public class SightGlass : Instrument
 {
     MashTun mashTun;
     [NonSerialized]
