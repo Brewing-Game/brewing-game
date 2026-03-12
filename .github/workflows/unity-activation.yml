@@ -1,0 +1,19 @@
+name: Get Unity Activation File
+
+on:
+  workflow_dispatch:
+
+jobs:
+  activation:
+    name: Request Unity Activation File
+    runs-on: ubuntu-latest
+    steps:
+      - uses: game-ci/unity-activate@v2
+        id: getManualLicenseFile
+        with:
+          unityVersion: 2022.3.62f3
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Manual Activation File
+          path: ${{ steps.getManualLicenseFile.outputs.manualActivationFilePath }}
