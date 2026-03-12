@@ -56,6 +56,15 @@ public class MashTun : MonoBehaviour
         }             
     }
 
+    public void SetFloatSwitchLevel(float value)
+    {
+        foreach (var instrument in instruments)
+        {
+            if (instrument is FloatSwitch floatSwitch)
+                floatSwitch.SetSelectedLevel(value);
+        }
+    }
+
     public void BrewBeer()
     {
         if (!_isFilling && !_isBrewing && _waterLevel > 0 && !_hasBrewed)
@@ -148,6 +157,8 @@ public class MashTun : MonoBehaviour
 
     public MashTunViewModel GetViewModel()
     {        
+        viewModel.ShowSelectedLevelInput = false;
+        viewModel.SelectedLevel = 0f;
         foreach(var instrument in instruments)
         {
             instrument.UpdateViewModel(viewModel, this);
@@ -175,6 +186,8 @@ public class MashTun : MonoBehaviour
        {
             FillButtonLabel = _isFilling ? "Stop" : "Fill",            
             ShowWaterLevelSlider = false,
+            ShowSelectedLevelInput = false,
+            SelectedLevel = 0f,
             WaterLevelPercentage = _waterLevel / _maxWaterLevel,
             WaterLevelColor = _waterColor,
             isBrewButtonInteractible = false,

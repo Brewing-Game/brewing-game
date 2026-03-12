@@ -13,6 +13,8 @@ public class Shop : MonoBehaviour
     public PlayerScoreIndicator playerScoreIndicator; 
     [Header("Upgrade Requirements")]
     public Slider waterLevelSlider;
+    public Slider selectedLevelSlider;
+    public TMP_InputField inputStopLevel;
 
     [Header("Stock")]
     public GameObject itemsContainer;
@@ -94,5 +96,10 @@ public class Shop : MonoBehaviour
             selectedItem.gameObject.GetComponent<SightGlass>().waterLevelSlider = waterLevelSlider;
             return;
         } 
+        if (selectedItem.instrumentType is FloatSwitch floatSwitch)
+        {
+            floatSwitch.selectedLevelSlider = selectedLevelSlider;
+            return;
+        }
     }
 }
