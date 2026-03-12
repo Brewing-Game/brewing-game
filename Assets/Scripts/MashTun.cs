@@ -13,16 +13,16 @@ public class MashTun : MonoBehaviour
     private float _waterLevel;
     public float waterLevel => _waterLevel;
     [SerializeField]
-    private float _maxWaterLevel;
+    private float _maxWaterLevel = 100f;
     public float maxWaterLevel => _maxWaterLevel;
     [SerializeField]
-    private float _optimalWaterLevel;
+    private float _optimalWaterLevel = 75f;
     [SerializeField]
-    private float _tolerance;
+    private float _tolerance = 10f;
     [SerializeField]
     public float optimalWaterLevel => _optimalWaterLevel;
     [SerializeField]
-    public float fillRate = 0.5f;
+    public float fillRate = 5f;
     private List<Instrument> instruments = new List<Instrument>();
     public MashTunViewModel viewModel;
     private Color _waterColor = new Color(0.3f, 0.5f, 0.9f);
@@ -130,17 +130,23 @@ public class MashTun : MonoBehaviour
     public float CalculatePoints(float level)
     {
         float difference = Mathf.Abs(level - _optimalWaterLevel);
-        if(difference >= _tolerance)
-        {
-            return 0;
-        }
-        return 100 - (difference * 100/_tolerance);
+        if (difference >= _tolerance) return 0;
+        float normalizedError = difference / _tolerance;
+        float score = 1f - (normalizedError * normalizedError);
+        float result = Mathf.Round(score * 100f) * viewModel.PointsMultiplier;
+        Debug.Log($"CalculatePoints: level={level}, optimal={_optimalWaterLevel}, difference={difference}, tolerance={_tolerance}, score={score}, multiplier={viewModel.PointsMultiplier}, result={result}");
+        return result;
     }
 
     public void AddInstrument(Instrument instrument)
     {
-        if(!instruments.Contains(instrument))
+        if (!instruments.Contains(instrument))
         {
+            if (instrument is UltrasonicFlowMeter)
+            {
+                var floatSwitch = instruments.Find(i => i is FloatSwitch);
+                if (floatSwitch != null) RemoveInstrument(floatSwitch);
+            }
             instrument.Install(this);
             instruments.Add(instrument);
         }
@@ -159,6 +165,11 @@ public class MashTun : MonoBehaviour
     {        
         viewModel.ShowSelectedLevelInput = false;
         viewModel.SelectedLevel = 0f;
+
+        viewModel.ShowOptimalLevelMarker = false;
+        viewModel.OptimalLevel = 0f;
+        viewModel.PointsMultiplier = 1f;
+
         foreach(var instrument in instruments)
         {
             instrument.UpdateViewModel(viewModel, this);

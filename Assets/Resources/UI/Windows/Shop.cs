@@ -15,6 +15,7 @@ public class Shop : MonoBehaviour
     public Slider waterLevelSlider;
     public Slider selectedLevelSlider;
     public TMP_InputField inputStopLevel;
+    public Slider optimalLevelMarker;
 
     [Header("Stock")]
     public GameObject itemsContainer;
@@ -77,28 +78,35 @@ public class Shop : MonoBehaviour
         if (playerScoreIndicator.score >= selectedItem.price)
         {
             playerScoreIndicator.score -= selectedItem.price;
-            foreach (GameObject mashtun in _mashTuns)
+            GameManager.Instance.SpendPoints(selectedItem.price);
+
+            foreach (GameObject mashTunObj in _mashTuns)
             {
-                mashtun.GetComponent<MashTun>().AddInstrument(selectedItem.instrumentType);
+                MashTun tun = mashTunObj.GetComponent<MashTun>();
+                Instrument newInstance = selectedItem.gameObject.AddComponent(selectedItem.instrumentType.GetType()) as Instrument;
+                tun.AddInstrument(newInstance);
+                FulfillRequirementsForInstance(newInstance);
             }
+
             selectedItem.isSold = true;
-            FullfillInstrumentRequirements();
         }   
     }
 
-    // 
-    public void FullfillInstrumentRequirements()
+    private void FulfillRequirementsForInstance(Instrument instrument)
     {
-        if (!selectedItem) return;
-
-        if (selectedItem.instrumentType is SightGlass)
+        if (instrument is SightGlass sightGlass)
         {
-            selectedItem.gameObject.GetComponent<SightGlass>().waterLevelSlider = waterLevelSlider;
+            sightGlass.waterLevelSlider = waterLevelSlider;
             return;
-        } 
-        if (selectedItem.instrumentType is FloatSwitch floatSwitch)
+        }
+        if (instrument is FloatSwitch floatSwitch)
         {
             floatSwitch.selectedLevelSlider = selectedLevelSlider;
+            return;
+        }
+        if (instrument is UltrasonicFlowMeter ultrasonicFlowMeter)
+        {
+            ultrasonicFlowMeter.optimalLevelMarker = optimalLevelMarker;
             return;
         }
     }

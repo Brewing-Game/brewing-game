@@ -13,4 +13,8 @@ public class MashTunViewModel
     public bool isBrewButtonInteractible;
     public bool isCollectButtonInteractible;
     public bool isFillButtonInteractible;
+    public bool ShowOptimalLevelMarker;
+    public float OptimalLevel;
+    public float PointsMultiplier;
+        
 }

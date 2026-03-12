@@ -17,6 +17,7 @@ public class MashTunWindow : MonoBehaviour
     public Slider waterLevel;  
     public Slider inputLevel;
     public TMP_InputField inputStopLevel;
+    public Slider optimalLevelMarker;
 
     [Header("Upgrade")]
     [SerializeField] private int upgradeCost = 10;
@@ -127,6 +128,9 @@ public class MashTunWindow : MonoBehaviour
         inputLevel.gameObject.SetActive(viewModel.ShowSelectedLevelInput);
         inputLevel.value = viewModel.SelectedLevel;
         inputStopLevel.gameObject.SetActive(viewModel.ShowSelectedLevelInput);
+
+        optimalLevelMarker.gameObject.SetActive(viewModel.ShowOptimalLevelMarker);
+        optimalLevelMarker.value = viewModel.OptimalLevel;
         
         var fillImage = waterLevel.fillRect.GetComponent<Image>();
         if (fillImage != null)

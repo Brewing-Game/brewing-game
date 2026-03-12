@@ -86,7 +86,7 @@ public class FloatSwitch : Instrument
         if(selectedLevelSlider != null)
         {
             selectedLevelSlider.minValue = 0;
-            selectedLevelSlider.maxValue = tun.maxWaterLevel;
+            selectedLevelSlider.maxValue = 1;
             selectedLevelSlider.value = _selectedStopLevel;
         }
         Debug.Log("FloatSwitch installed");
