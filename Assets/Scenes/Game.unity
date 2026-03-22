@@ -1473,7 +1473,7 @@ MonoBehaviour:
   _maxWaterLevel: 100
   _optimalWaterLevel: 75
   _tolerance: 10
-  fillRate: 5
+  fillRate: 8
 --- !u!114 &553088990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3696,6 +3696,14 @@ PrefabInstance:
       propertyPath: itemsToSell.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 715778030989738939, guid: f10844bf059431113961fc85ec7b304b, type: 3}
+      propertyPath: itemsToSell.Array.data[0]
+      value: 
+      objectReference: {fileID: 6912119111859175434, guid: f447655dda6abd2548c91dd3c03ec5e6, type: 3}
+    - target: {fileID: 715778030989738939, guid: f10844bf059431113961fc85ec7b304b, type: 3}
+      propertyPath: itemsToSell.Array.data[1]
+      value: 
+      objectReference: {fileID: 3769467936695047019, guid: ed8cdad4f6e2b3fbfaae705ad03f11d8, type: 3}
     - target: {fileID: 715778030989738939, guid: f10844bf059431113961fc85ec7b304b, type: 3}
       propertyPath: itemsToSell.Array.data[2]
       value: 
@@ -7140,7 +7148,7 @@ MonoBehaviour:
   _maxWaterLevel: 100
   _optimalWaterLevel: 75
   _tolerance: 10
-  fillRate: 5
+  fillRate: 8
 --- !u!65 &7238818136528556130
 BoxCollider:
   m_ObjectHideFlags: 0
