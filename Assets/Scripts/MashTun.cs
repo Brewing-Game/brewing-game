@@ -17,6 +17,13 @@ public class MashTun : MonoBehaviour
     public float maxWaterLevel => _maxWaterLevel;
     [SerializeField]
     private float _optimalWaterLevel = 75f;
+
+    private float _floatSwitchLevel = 0f;    
+    public float floatSwitchLevel
+    {
+        get => _floatSwitchLevel;
+        set => _floatSwitchLevel = value;
+    }
     [SerializeField]
     private float _tolerance = 10f;
     [SerializeField]
@@ -57,13 +64,15 @@ public class MashTun : MonoBehaviour
     }
 
     public void SetFloatSwitchLevel(float value)
+{
+    _floatSwitchLevel = value;
+
+    foreach (var instrument in instruments)
     {
-        foreach (var instrument in instruments)
-        {
-            if (instrument is FloatSwitch floatSwitch)
-                floatSwitch.SetSelectedLevel(value);
-        }
+        if (instrument is FloatSwitch floatSwitch)
+            floatSwitch.SetSelectedLevel(value);
     }
+}
 
     public void BrewBeer()
     {

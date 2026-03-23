@@ -18,6 +18,7 @@ public class MashTunWindow : MonoBehaviour
     public Slider inputLevel;
     public TMP_InputField inputStopLevel;
     public Slider optimalLevelMarker;
+    private float _lastDisplayedStopLevel = float.MinValue;
 
     [Header("Upgrade")]
     [SerializeField] private int upgradeCost = 10;
@@ -128,6 +129,14 @@ public class MashTunWindow : MonoBehaviour
         inputLevel.gameObject.SetActive(viewModel.ShowSelectedLevelInput);
         inputLevel.value = viewModel.SelectedLevel;
         inputStopLevel.gameObject.SetActive(viewModel.ShowSelectedLevelInput);
+        if (!Mathf.Approximately(_lastDisplayedStopLevel, viewModel.SelectedLevel))
+        {
+            inputStopLevel.SetTextWithoutNotify(
+                viewModel.SelectedLevel.ToString("0.##")
+            );
+
+            _lastDisplayedStopLevel = viewModel.SelectedLevel;
+        }
 
         optimalLevelMarker.gameObject.SetActive(viewModel.ShowOptimalLevelMarker);
         optimalLevelMarker.value = viewModel.OptimalLevel;
