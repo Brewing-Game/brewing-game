@@ -3,23 +3,49 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class FloatSwitch : Instrument
 {
     private MashTun mashTun;    
     private Coroutine _stopAtOptimalLevelCoroutine;
-    private float _optimalStopLevel;
-  
-    private IEnumerator StopAtSetLevel()
+    private float _selectedStopLevel;
+    public float selectedLevel => _selectedStopLevel;
+    public TMP_InputField inputLevel;
+    [NonSerialized]
+    public Slider selectedLevelSlider;
+    
+    public void SetSelectedLevel(float value)
     {
-        while (mashTun != null && mashTun.isFilling)
+        _selectedStopLevel = value;
+        if(selectedLevelSlider != null)
         {
-            _optimalStopLevel = mashTun.optimalWaterLevel;
-            if(mashTun.waterLevel >= _optimalStopLevel)
+            selectedLevelSlider.value = _selectedStopLevel;
+        }
+    }
+
+    private void OnInputLevelChanged(string value)
+    {
+        if(float.TryParse(value, out float parsed))
+        {
+            _selectedStopLevel = parsed;
+            if(selectedLevelSlider != null)
+                selectedLevelSlider.value = _selectedStopLevel;
+        }
+    }
+    private IEnumerator StopAtSetLevel()
+    {        
+        float variance = (UnityEngine.Random.value * 20f) - 10f;
+        float targetLevel = _selectedStopLevel + variance;
+        Debug.Log($"FloatSwitch targeting: {targetLevel} (selected: {_selectedStopLevel}, variance: {variance})");
+        while (mashTun != null && mashTun.isFilling)
+        {            
+            if(mashTun.waterLevel >= targetLevel)
             {
                 mashTun.StopWaterFlow();
                 _stopAtOptimalLevelCoroutine = null;
-                yield break; //exit coroutine
+                yield break;
             }
             yield return null;
         }
@@ -57,8 +83,13 @@ public class FloatSwitch : Instrument
     public override void Install(MashTun tun)
     {
         mashTun = tun;
-
-        Debug.Log("AutoStopValve installed");
+        if(selectedLevelSlider != null)
+        {
+            selectedLevelSlider.minValue = 0;
+            selectedLevelSlider.maxValue = 1;
+            selectedLevelSlider.value = _selectedStopLevel;
+        }
+        Debug.Log("FloatSwitch installed");
     }
     public override void Uninstall()
     {
@@ -69,8 +100,12 @@ public class FloatSwitch : Instrument
         }
 
         mashTun = null;
-        Debug.Log("AutoStopValve uninstalled");
+        Debug.Log("FloatSwitch uninstalled");
     }
 
-    public override void UpdateViewModel(MashTunViewModel viewModel, MashTun tun){}
+    public override void UpdateViewModel(MashTunViewModel viewModel, MashTun tun)
+    {
+        viewModel.ShowSelectedLevelInput = true;
+        viewModel.SelectedLevel = _selectedStopLevel;
+    }
 }

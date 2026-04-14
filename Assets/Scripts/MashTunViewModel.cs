@@ -6,9 +6,15 @@ public class MashTunViewModel
 {
     public string FillButtonLabel;       
     public bool ShowWaterLevelSlider;
+    public bool ShowSelectedLevelInput;
+    public float SelectedLevel;
     public float WaterLevelPercentage;   
     public Color WaterLevelColor;
     public bool isBrewButtonInteractible;
     public bool isCollectButtonInteractible;
     public bool isFillButtonInteractible;
+    public bool ShowOptimalLevelMarker;
+    public float OptimalLevel;
+    public float PointsMultiplier;
+        
 }

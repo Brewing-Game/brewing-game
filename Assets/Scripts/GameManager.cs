@@ -75,8 +75,14 @@ public class GameManager : MonoBehaviour
             playerScoreIndicator.score = _totalPoints;
         }
         OnPointsChanged?.Invoke(_totalPoints);
+        CheckWinCondition();
     }
 
+    public void SpendPoints(int amount)
+    {
+        _totalPoints -= amount;
+        OnPointsChanged?.Invoke(_totalPoints);
+    }
     private void CheckWinCondition()
     {
         if(_totalPoints >= _pointsToWin)
@@ -107,6 +113,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckWinCondition();
+        
     }
 }

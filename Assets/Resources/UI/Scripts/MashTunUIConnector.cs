@@ -27,9 +27,12 @@ public class MashTunUIConnector : MonoBehaviour
 
     private void DisplayWindowForSelectedTun()
     {
-        mashTunWindow.tun = _mashTuns[_selectedIndex.Value].GetComponent<MashTun>();
-        mashTunWindow.gameObject.SetActive(true);
-        mashTunWindow.UpdateUI();
+        if(_mashTuns[_selectedIndex.Value].GetComponent<MashTun>() != null && mashTunWindow != null)
+        {
+            mashTunWindow.tun = _mashTuns[_selectedIndex.Value].GetComponent<MashTun>();
+            mashTunWindow.gameObject.SetActive(true);
+            mashTunWindow.UpdateUI();
+        }
     }
 
     void Start()

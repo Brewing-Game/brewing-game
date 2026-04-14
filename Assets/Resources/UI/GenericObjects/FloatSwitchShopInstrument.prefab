@@ -134,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4405984196523172884, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: price
-      value: 500
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4405984196523172884, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: itemName
@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1378552cdb13fa45b1afdbc1f9acf44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputLevel: {fileID: 0}
 --- !u!1 &5661872564992247641 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6764142073687616940, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}

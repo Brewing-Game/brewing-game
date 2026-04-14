@@ -15,7 +15,9 @@ public class MashTunWindow : MonoBehaviour
     public Button brewButton;
     public Button collectButton;
     public Slider waterLevel;  
+    public Slider inputLevel;
     public TMP_InputField inputStopLevel;
+    public Slider optimalLevelMarker;
 
     [Header("Upgrade")]
     [SerializeField] private int upgradeCost = 10;
@@ -75,6 +77,11 @@ public class MashTunWindow : MonoBehaviour
             fillButtonLabel.text = ("Fill");                        
         }        
     }
+    private void OnStopLevelChanged(string value)
+    {
+        if (float.TryParse(value, out float parsed))
+            tun.SetFloatSwitchLevel(parsed);
+    }
 
     public void OnBrewButtonClick()
     {
@@ -117,11 +124,19 @@ public class MashTunWindow : MonoBehaviour
 
         waterLevel.gameObject.SetActive(viewModel.ShowWaterLevelSlider);
         waterLevel.value = viewModel.WaterLevelPercentage;
+
+        inputLevel.gameObject.SetActive(viewModel.ShowSelectedLevelInput);
+        inputLevel.value = viewModel.SelectedLevel;
+        inputStopLevel.gameObject.SetActive(viewModel.ShowSelectedLevelInput);
+
+        optimalLevelMarker.gameObject.SetActive(viewModel.ShowOptimalLevelMarker);
+        optimalLevelMarker.value = viewModel.OptimalLevel;
         
         var fillImage = waterLevel.fillRect.GetComponent<Image>();
         if (fillImage != null)
             fillImage.color = viewModel.WaterLevelColor;
     }
+    
     void Awake()
     {
         if (fillButtonLabel == null && fillButton != null)
@@ -130,9 +145,11 @@ public class MashTunWindow : MonoBehaviour
         fillButton.onClick.AddListener(OnToggleFill);
         brewButton.onClick.AddListener(OnBrewButtonClick);
         collectButton.onClick.AddListener(OnCollectButtonClick);
+        
     }
     void Start()
-    {   
+    {
+        inputStopLevel.onEndEdit.AddListener(OnStopLevelChanged);
     }
 
     void Update()
