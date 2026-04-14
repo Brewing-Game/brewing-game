@@ -173,8 +173,7 @@ public class MashTun : MonoBehaviour
     {
        viewModel = new MashTunViewModel
        {
-            FillButtonLabel = _isFilling ? "Stop" : "Fill",
-            ShowUpgradeButton = true,
+            FillButtonLabel = _isFilling ? "Stop" : "Fill",            
             ShowWaterLevelSlider = false,
             WaterLevelPercentage = _waterLevel / _maxWaterLevel,
             WaterLevelColor = _waterColor,

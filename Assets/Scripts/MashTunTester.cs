@@ -5,14 +5,14 @@ public class MashTunTester : MonoBehaviour
 {
     public MashTun mashTun;
     public Slider waterLevelSlider;
-    WaterLevelSensor sensor; 
+    SightGlass sensor; 
     
     void Start()
     {
         // Create and install the water level sensor
         if (waterLevelSlider != null)
         {
-            sensor = new WaterLevelSensor();
+            sensor = new SightGlass();
             mashTun.AddInstrument(sensor);
         }
     }

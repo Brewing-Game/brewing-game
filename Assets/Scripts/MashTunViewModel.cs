@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MashTunViewModel
 {
-    public string FillButtonLabel;
-    public bool ShowUpgradeButton;    
+    public string FillButtonLabel;       
     public bool ShowWaterLevelSlider;
     public float WaterLevelPercentage;   
     public Color WaterLevelColor;

@@ -89,9 +89,9 @@ public class Shop : MonoBehaviour
     {
         if (!selectedItem) return;
 
-        if (selectedItem.instrumentType is WaterLevelSensor)
+        if (selectedItem.instrumentType is SightGlass)
         {
-            selectedItem.gameObject.GetComponent<WaterLevelSensor>().waterLevelSlider = waterLevelSlider;
+            selectedItem.gameObject.GetComponent<SightGlass>().waterLevelSlider = waterLevelSlider;
             return;
         } 
     }
