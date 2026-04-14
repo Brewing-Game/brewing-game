@@ -3740,7 +3740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameActive: 0
   _pointsToWin: 1000
-  _startPoints: 0
+  _startPoints: 800
   _winPanel: {fileID: 1022897097}
   _winMessageText: {fileID: 0}
   playerScoreIndicator: {fileID: 262320340}
@@ -6280,7 +6280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8487201596275748091, guid: d06a412d55cd5f151982fb0bb15da896, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00018310547
+      value: -0.00024414062
       objectReference: {fileID: 0}
     - target: {fileID: 8487201596275748091, guid: d06a412d55cd5f151982fb0bb15da896, type: 3}
       propertyPath: m_AnchoredPosition.y
