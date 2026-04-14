@@ -10,7 +10,7 @@ public class UltrasonicFlowMeter : Instrument
     private MashTun mashTun;    
     private Coroutine _stopAtOptimalLevelCoroutine;
     [NonSerialized]public Slider optimalLevelMarker;   
-    private const float _pointsMultiplier = 1.68f; 
+    private const float _pointsMultiplier = 2f; 
 
     // Start is called before the first frame update
     void Start()

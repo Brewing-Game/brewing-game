@@ -150,7 +150,10 @@ PrefabInstance:
       objectReference: {fileID: 2679663432076383288}
     - target: {fileID: 4405984196523172884, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: description
-      value: Displays the optimal infill level to obtain maximum points.
+      value: A high-precision instrument that measures water flow using ultrasonic
+        waves. By calculating the exact volume transferred in real time, it ensures
+        your mash tun receives the perfect amount of water every time, automatically
+        stopping the flow at the optimal level. Includes score multiplier.
       objectReference: {fileID: 0}
     - target: {fileID: 4693155552247282801, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: m_Sprite

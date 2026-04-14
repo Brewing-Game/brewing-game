@@ -150,7 +150,9 @@ PrefabInstance:
       objectReference: {fileID: 5661872564992247641}
     - target: {fileID: 4405984196523172884, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: description
-      value: Automatically stops pouring water at the desired level.
+      value: A simple level-activated device that automatically stops water flow
+        when a programmed fill level is reached. Mechanical tolerances and liquid
+        movement can cause slight variations in accuracy.
       objectReference: {fileID: 0}
     - target: {fileID: 4693155552247282801, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: m_Sprite

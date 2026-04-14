@@ -87,6 +87,7 @@ public class FloatSwitch : Instrument
         {
             selectedLevelSlider.minValue = 0;
             selectedLevelSlider.maxValue = 1;
+            _selectedStopLevel = tun.floatSwitchLevel;
             selectedLevelSlider.value = _selectedStopLevel;
         }
         Debug.Log("FloatSwitch installed");
@@ -106,6 +107,6 @@ public class FloatSwitch : Instrument
     public override void UpdateViewModel(MashTunViewModel viewModel, MashTun tun)
     {
         viewModel.ShowSelectedLevelInput = true;
-        viewModel.SelectedLevel = _selectedStopLevel;
+        viewModel.SelectedLevel = tun.floatSwitchLevel;
     }
 }

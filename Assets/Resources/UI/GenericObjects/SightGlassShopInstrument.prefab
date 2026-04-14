@@ -150,7 +150,9 @@ PrefabInstance:
       objectReference: {fileID: 2679663432076383288}
     - target: {fileID: 4405984196523172884, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: description
-      value: Displays the infill level of your mash tuns.
+      value: A transparent tube connected to the vessel that displays liquid level
+        through direct visual indication. Allows you to monitor filling progress
+        and judge the correct level manually.
       objectReference: {fileID: 0}
     - target: {fileID: 4693155552247282801, guid: 06c6c87a4cd61b4188896bf7daebd5dc, type: 3}
       propertyPath: m_Sprite
